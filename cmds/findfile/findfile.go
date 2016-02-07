@@ -52,6 +52,7 @@ var (
 	findDirectoriesOnly bool
 	findFilesOnly       bool
 	findPrefix          bool
+	findContains        bool
 	findSuffix          bool
 	stopOnErrors        bool
 	outputFullPath      bool
@@ -87,6 +88,8 @@ func walkPath(docroot string, target string) error {
 			display(docroot, p)
 		case findSuffix == true && strings.HasSuffix(s, target) == true:
 			display(docroot, p)
+		case findContains == true && strings.Contains(s, target) == true:
+			display(docroot, p)
 		case strings.Compare(s, target) == 0:
 			display(docroot, p)
 		}
@@ -101,6 +104,7 @@ func init() {
 	flag.BoolVar(&findFilesOnly, "f", false, "find files only")
 	flag.BoolVar(&stopOnErrors, "e", false, "Stop walk on file system errors (e.g. permissions)")
 	flag.BoolVar(&findPrefix, "p", false, "find file(s) based on basename prefix")
+	flag.BoolVar(&findContains, "c", false, "find file(s) based on basename containing text")
 	flag.BoolVar(&findSuffix, "s", false, "find file(s) based on basename suffix")
 	flag.BoolVar(&outputFullPath, "F", false, "list full path for files found")
 }
