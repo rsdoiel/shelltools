@@ -7,7 +7,7 @@ A simple implementation of a file find in go. It demonstrates walking a file pat
 
 	findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
 
-Version 0.0.0
+Version 0.0.1
 
 ## OPTIONS
 
