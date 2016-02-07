@@ -1,6 +1,6 @@
 # findfile
 
-A simple implementation of a file find in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go's flag package.
+A simple implementation of a file finder in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go's flag package.
 
 
 ## USAGE 
