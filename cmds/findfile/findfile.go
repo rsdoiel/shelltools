@@ -21,8 +21,9 @@ var (
 	showVersion         bool
 	findDirectoriesOnly bool
 	findFilesOnly       bool
-	findBasename        bool
-	findExtension       bool
+	findPrefix          bool
+	findSuffix          bool
+	stopOnErrors        bool
 	outputFullPath      bool
 )
 
@@ -37,32 +38,30 @@ func display(docroot, p string) {
 }
 
 func walkPath(docroot string, target string) error {
-	err := filepath.Walk(docroot, func(p string, info os.FileInfo, err error) error {
+	return filepath.Walk(docroot, func(p string, info os.FileInfo, err error) error {
+		if err != nil {
+			if stopOnErrors == true {
+				return fmt.Errorf("Can't read %s, %s", p, err)
+			}
+			return nil
+		}
 		if findDirectoriesOnly == true && info.IsDir() == false {
 			return nil
 		}
 		if findFilesOnly == true && info.Mode().IsRegular() == false {
 			return nil
 		}
-		if err != nil {
-			return fmt.Errorf("Can't read %s, %s", p, err)
-		}
 		s := filepath.Base(p)
 		switch {
-		case findBasename == true:
-			if strings.HasPrefix(s, target) == true {
-				display(docroot, p)
-			}
-		case findExtension == true:
-			if strings.HasSuffix(s, target) == true {
-				display(docroot, p)
-			}
+		case findPrefix == true && strings.HasPrefix(s, target) == true:
+			display(docroot, p)
+		case findSuffix == true && strings.HasSuffix(s, target) == true:
+			display(docroot, p)
 		case strings.Compare(s, target) == 0:
 			display(docroot, p)
 		}
 		return nil
 	})
-	return err
 }
 
 func init() {
@@ -70,9 +69,10 @@ func init() {
 	flag.BoolVar(&showVersion, "v", false, "display version message")
 	flag.BoolVar(&findDirectoriesOnly, "d", false, "find directories only")
 	flag.BoolVar(&findFilesOnly, "f", false, "find files only")
-	flag.BoolVar(&findBasename, "p", false, "find file(s) based on basename prefix")
-	flag.BoolVar(&findExtension, "s", false, "find file(s) based on basename suffix")
-	flag.BoolVar(&outputFullPath, "full", false, "list full path for files found")
+	flag.BoolVar(&stopOnErrors, "e", false, "Stop walk on file system errors (e.g. permissions)")
+	flag.BoolVar(&findPrefix, "p", false, "find file(s) based on basename prefix")
+	flag.BoolVar(&findSuffix, "s", false, "find file(s) based on basename suffix")
+	flag.BoolVar(&outputFullPath, "F", false, "list full path for files found")
 }
 
 func main() {
