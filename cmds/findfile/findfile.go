@@ -44,17 +44,17 @@ import (
 	"strings"
 )
 
-const version = "0.0.2"
+const version = "0.0.3"
 
 var (
-	help                bool
-	showVersion         bool
-    showLicense         bool
-	findPrefix          bool
-	findContains        bool
-	findSuffix          bool
-	stopOnErrors        bool
-	outputFullPath      bool
+	help           bool
+	showVersion    bool
+	showLicense    bool
+	findPrefix     bool
+	findContains   bool
+	findSuffix     bool
+	stopOnErrors   bool
+	outputFullPath bool
 )
 
 func display(docroot, p string) {
@@ -75,7 +75,7 @@ func walkPath(docroot string, target string) error {
 			}
 			return nil
 		}
-		if info.IsDir() == false || info.Mode().IsRegular() == false {
+		if info.IsDir() == true || info.Mode().IsRegular() == false {
 			return nil
 		}
 		s := filepath.Base(p)
@@ -96,7 +96,7 @@ func walkPath(docroot string, target string) error {
 func init() {
 	flag.BoolVar(&help, "h", false, "display this help message")
 	flag.BoolVar(&showVersion, "v", false, "display version message")
-    flag.BoolVar(&showLicense, "l", false, "display license information")
+	flag.BoolVar(&showLicense, "l", false, "display license information")
 	flag.BoolVar(&stopOnErrors, "e", false, "Stop walk on file system errors (e.g. permissions)")
 	flag.BoolVar(&findPrefix, "p", false, "find file(s) based on basename prefix")
 	flag.BoolVar(&findContains, "c", false, "find file(s) based on basename containing text")
@@ -114,8 +114,8 @@ func main() {
 		os.Exit(0)
 	}
 
-    if showLicense == true {
-        fmt.Println(`
+	if showLicense == true {
+		fmt.Println(`
 
  Copyright (c) 2016, R. S. Doiel
  All rights reserved.
@@ -146,8 +146,8 @@ func main() {
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 `)
-        os.Exit(0)
-    }
+		os.Exit(0)
+	}
 
 	if help == true || len(args) == 0 {
 		fmt.Printf(`USAGE findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
