@@ -21,4 +21,11 @@ Version 0.0.1
  -s    | find file(s) based on basename suffix
  -v    | display version message
 
+## Installation
+
+_findfile_ is go get-able.
+
+```
+    go get github.com/rsdoiel/findfile/...
+```
 
