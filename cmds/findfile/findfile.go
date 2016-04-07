@@ -75,19 +75,20 @@ func walkPath(docroot string, target string) error {
 			}
 			return nil
 		}
-		if info.IsDir() == true || info.Mode().IsRegular() == false {
-			return nil
-		}
-		s := filepath.Base(p)
-		switch {
-		case findPrefix == true && strings.HasPrefix(s, target) == true:
-			display(docroot, p)
-		case findSuffix == true && strings.HasSuffix(s, target) == true:
-			display(docroot, p)
-		case findContains == true && strings.Contains(s, target) == true:
-			display(docroot, p)
-		case strings.Compare(s, target) == 0:
-			display(docroot, p)
+		// If a regular file then apply rules for display
+		if info.Mode().IsRegular() == true {
+			s := filepath.Base(p)
+			switch {
+			case findPrefix == true && strings.HasPrefix(s, target) == true:
+				display(docroot, p)
+			case findSuffix == true && strings.HasSuffix(s, target) == true:
+				display(docroot, p)
+			case findContains == true && strings.Contains(s, target) == true:
+				display(docroot, p)
+			case strings.Compare(s, target) == 0:
+				display(docroot, p)
+			}
+
 		}
 		return nil
 	})
