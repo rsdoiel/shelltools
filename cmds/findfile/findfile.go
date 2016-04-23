@@ -44,7 +44,7 @@ import (
 	"strings"
 )
 
-const version = "0.0.3"
+const version = "0.0.4"
 
 var (
 	help           bool
@@ -155,20 +155,12 @@ func main() {
 
   Finds files based on matching prefix, suffix or contained text in base filename.
 
-   -c   find file(s) based on basename containing text
-   -p   find file(s) based on basename prefix
-   -s   find file(s) based on basename suffix
-
-   -F   list full path for files found
-   -e   Stop walk on file system errors (e.g. permissions)
-
-   -h   display this help message
-   -l   display license information
-   -v   display version message
-
- Version %s
-`, version)
-		if len(args) == 0 {
+`)
+		flag.VisitAll(func(f *flag.Flag) {
+			fmt.Printf("    -%s  (defaults to %s) %s\n", f.Name, f.DefValue, f.Usage)
+		})
+		fmt.Printf(" Version %s\n", version)
+		if help == false && len(args) == 0 {
 			os.Exit(1)
 		}
 		os.Exit(0)
