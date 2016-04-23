@@ -1,3 +1,6 @@
+
+[![Go Report Card](http://goreportcard.com/badge/rsdoiel/findfile)](http://goreportcard.com/report/rsdoiel/findfile)
+
 # findfile
 
 A simple implementation of a file finder in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go's flag package.
