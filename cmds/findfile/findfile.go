@@ -42,27 +42,33 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
-const version = "0.0.4"
+const version = "0.0.5"
 
 var (
-	help           bool
-	showVersion    bool
-	showLicense    bool
-	findPrefix     bool
-	findContains   bool
-	findSuffix     bool
-	stopOnErrors   bool
-	outputFullPath bool
+	help                 bool
+	showVersion          bool
+	showLicense          bool
+	findPrefix           bool
+	findContains         bool
+	findSuffix           bool
+	stopOnErrors         bool
+	outputFullPath       bool
+	showModificationTime bool
 )
 
-func display(docroot, p string) {
+func display(docroot, p string, m time.Time) {
 	var s string
 	if outputFullPath == true {
 		s, _ = filepath.Abs(p)
 	} else {
 		s, _ = filepath.Rel(docroot, p)
+	}
+	if showModificationTime == true {
+		fmt.Printf("%s %s\n", m.Format("2006-01-02 15:04:05 -0700"), s)
+		return
 	}
 	fmt.Printf("%s\n", s)
 }
@@ -80,15 +86,14 @@ func walkPath(docroot string, target string) error {
 			s := filepath.Base(p)
 			switch {
 			case findPrefix == true && strings.HasPrefix(s, target) == true:
-				display(docroot, p)
+				display(docroot, p, info.ModTime())
 			case findSuffix == true && strings.HasSuffix(s, target) == true:
-				display(docroot, p)
+				display(docroot, p, info.ModTime())
 			case findContains == true && strings.Contains(s, target) == true:
-				display(docroot, p)
+				display(docroot, p, info.ModTime())
 			case strings.Compare(s, target) == 0:
-				display(docroot, p)
+				display(docroot, p, info.ModTime())
 			}
-
 		}
 		return nil
 	})
@@ -103,6 +108,7 @@ func init() {
 	flag.BoolVar(&findContains, "c", false, "find file(s) based on basename containing text")
 	flag.BoolVar(&findSuffix, "s", false, "find file(s) based on basename suffix")
 	flag.BoolVar(&outputFullPath, "F", false, "list full path for files found")
+	flag.BoolVar(&showModificationTime, "m", false, "display file modification time before the path")
 }
 
 func main() {
