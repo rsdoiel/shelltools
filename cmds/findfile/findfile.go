@@ -45,7 +45,7 @@ import (
 	"time"
 )
 
-const version = "0.0.5"
+const version = "0.0.6"
 
 var (
 	help                 bool
@@ -92,6 +92,8 @@ func walkPath(docroot string, target string) error {
 			case findContains == true && strings.Contains(s, target) == true:
 				display(docroot, p, info.ModTime())
 			case strings.Compare(s, target) == 0:
+				display(docroot, p, info.ModTime())
+			default:
 				display(docroot, p, info.ModTime())
 			}
 		}
@@ -156,8 +158,8 @@ func main() {
 		os.Exit(0)
 	}
 
-	if help == true || len(args) == 0 {
-		fmt.Printf(`USAGE findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
+	if help == true {
+		fmt.Printf(`USAGE findfile [OPTIONS] [TARGET_FILENAME] [DIRECTORIES_TO_SEARCH]
 
   Finds files based on matching prefix, suffix or contained text in base filename.
 
@@ -170,6 +172,13 @@ func main() {
 			os.Exit(1)
 		}
 		os.Exit(0)
+	}
+
+	if len(args) == 0 {
+		err := walkPath(".", "")
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	if len(args) == 1 {
