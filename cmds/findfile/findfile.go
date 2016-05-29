@@ -45,18 +45,19 @@ import (
 	"time"
 )
 
-const version = "0.0.6"
+const version = "0.0.7"
 
 var (
 	help                 bool
 	showVersion          bool
 	showLicense          bool
+	showModificationTime bool
 	findPrefix           bool
 	findContains         bool
 	findSuffix           bool
+	findAll              bool
 	stopOnErrors         bool
 	outputFullPath       bool
-	showModificationTime bool
 )
 
 func display(docroot, p string, m time.Time) {
@@ -93,7 +94,7 @@ func walkPath(docroot string, target string) error {
 				display(docroot, p, info.ModTime())
 			case strings.Compare(s, target) == 0:
 				display(docroot, p, info.ModTime())
-			default:
+			case findAll == true:
 				display(docroot, p, info.ModTime())
 			}
 		}
@@ -105,16 +106,16 @@ func init() {
 	flag.BoolVar(&help, "h", false, "display this help message")
 	flag.BoolVar(&showVersion, "v", false, "display version message")
 	flag.BoolVar(&showLicense, "l", false, "display license information")
+	flag.BoolVar(&showModificationTime, "m", false, "display file modification time before the path")
 	flag.BoolVar(&stopOnErrors, "e", false, "Stop walk on file system errors (e.g. permissions)")
 	flag.BoolVar(&findPrefix, "p", false, "find file(s) based on basename prefix")
 	flag.BoolVar(&findContains, "c", false, "find file(s) based on basename containing text")
 	flag.BoolVar(&findSuffix, "s", false, "find file(s) based on basename suffix")
+	flag.BoolVar(&findAll, "a", false, "find all files")
 	flag.BoolVar(&outputFullPath, "F", false, "list full path for files found")
-	flag.BoolVar(&showModificationTime, "m", false, "display file modification time before the path")
 }
 
 func main() {
-	target := ""
 	flag.Parse()
 	args := flag.Args()
 
@@ -158,7 +159,7 @@ func main() {
 		os.Exit(0)
 	}
 
-	if help == true {
+	if help == true || (findAll == false && len(args) == 0) {
 		fmt.Printf(`USAGE findfile [OPTIONS] [TARGET_FILENAME] [DIRECTORIES_TO_SEARCH]
 
   Finds files based on matching prefix, suffix or contained text in base filename.
@@ -174,28 +175,22 @@ func main() {
 		os.Exit(0)
 	}
 
+	// Shift the target filename so args holds the directories to search
+	target := ""
+	if findAll == false && len(args) > 0 {
+		target, args = args[0], args[1:]
+	}
+
+	// Handle the case where currect work directory is assumed
 	if len(args) == 0 {
-		err := walkPath(".", "")
-		if err != nil {
-			log.Fatal(err)
-		}
+		args = []string{"."}
 	}
 
-	if len(args) == 1 {
-		err := walkPath(".", args[0])
+	// For each directory to search walk the path
+	for _, dir := range args {
+		err := walkPath(dir, target)
 		if err != nil {
 			log.Fatal(err)
-		}
-	}
-
-	for i, dir := range args {
-		if i == 0 {
-			target = dir
-		} else {
-			err := walkPath(dir, target)
-			if err != nil {
-				log.Fatal(err)
-			}
 		}
 	}
 }
