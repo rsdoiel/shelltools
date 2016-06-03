@@ -45,7 +45,7 @@ import (
 	"time"
 )
 
-const version = "0.0.7"
+const version = "0.0.8"
 
 var (
 	help                 bool
@@ -58,6 +58,8 @@ var (
 	findAll              bool
 	stopOnErrors         bool
 	outputFullPath       bool
+	optDepth             int
+	pathSep              string
 )
 
 func display(docroot, p string, m time.Time) {
@@ -82,9 +84,17 @@ func walkPath(docroot string, target string) error {
 			}
 			return nil
 		}
+		// Limit depth of walk by directory
+		if optDepth > 0 {
+			d := filepath.Dir(p)
+			currentDepth := strings.Count(d, pathSep) + 1
+			if currentDepth > optDepth {
+				return filepath.SkipDir
+			}
+		}
+		s := filepath.Base(p)
 		// If a regular file then apply rules for display
 		if info.Mode().IsRegular() == true {
-			s := filepath.Base(p)
 			switch {
 			case findPrefix == true && strings.HasPrefix(s, target) == true:
 				display(docroot, p, info.ModTime())
@@ -113,6 +123,8 @@ func init() {
 	flag.BoolVar(&findSuffix, "s", false, "find file(s) based on basename suffix")
 	flag.BoolVar(&findAll, "a", false, "find all files")
 	flag.BoolVar(&outputFullPath, "F", false, "list full path for files found")
+	flag.IntVar(&optDepth, "d", 0, "Limit depth of directories walked")
+	pathSep = string(os.PathSeparator)
 }
 
 func main() {
