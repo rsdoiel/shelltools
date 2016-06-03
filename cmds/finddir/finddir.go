@@ -45,7 +45,7 @@ import (
 	"time"
 )
 
-const version = "0.0.8"
+const version = "0.0.9"
 
 var (
 	help                 bool
@@ -77,7 +77,6 @@ func display(docroot, p string, m time.Time) {
 }
 
 func walkPath(docroot string, target string) error {
-	fmt.Printf("DEBUG docroot in walkPath(): %s\n", docroot)
 	return filepath.Walk(docroot, func(p string, info os.FileInfo, err error) error {
 		if err != nil {
 			if stopOnErrors == true {
