@@ -2,15 +2,17 @@
 # Simple Makefile
 #
 
-build: cmds/findfile/findfile.go
+build:
 	go build -o bin/findfile cmds/findfile/findfile.go 
 	go build -o bin/finddir	 cmds/finddir/finddir.go 
 
-clean: bin/findfile
-	rm bin/findfile
-	rm bin/finddir
+clean: 
+	if [ -d bin ]; then rm -fR bin; fi
+	if [ -d dist ]; then rm -fR dist; fi
 
-install: cmds/findfile/findfile.go
-	go install cmds/findfile/findfile.go
-	go install cmds/finddir/finddir.go
+install:
+	env GOBIN=$HOME/bin go install cmds/findfile/findfile.go
+	env GOBIN=$HOME/bin go install cmds/finddir/finddir.go
 
+release:
+	./mk-release.sh
