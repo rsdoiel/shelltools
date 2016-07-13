@@ -26,6 +26,9 @@ _testmain.go
 #
 # Project specific files
 #
-findfile
+*~
+*.swp
+*.zip
+dist/*
 bin/*
 
