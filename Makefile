@@ -5,6 +5,16 @@
 build:
 	go build -o bin/findfile cmds/findfile/findfile.go 
 	go build -o bin/finddir	 cmds/finddir/finddir.go 
+	./mk-website.bash
+
+save:
+	./mk-website.bash
+	git commit -am "quick save"
+	git push origin master
+
+publish:
+	./mk-website.bash
+	./publish.bash
 
 clean: 
 	if [ -d bin ]; then rm -fR bin; fi
@@ -16,4 +26,4 @@ install:
 	env GOBIN=$(HOME)/bin go install cmds/finddir/finddir.go
 
 release:
-	./mk-release.sh
+	./mk-release.bash

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>findfile: simplified commands listing files and directories</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href="css/site.css" rel="stylesheet" />
+<head>
+<body>
+    <header>
+        <h1>findfile: simplified commands listing files and directories</h1>
+    </header>
+    <section><p><a href="http://goreportcard.com/report/rsdoiel/findfile"><img src="http://goreportcard.com/badge/rsdoiel/findfile" alt="Go Report Card" /></a>
+<a href="https://opensource.org/licenses/BSD-3-Clause"><img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" alt="License" /></a></p>
+
+<h1>findfile</h1>
+
+<p>A simple implementation of a file finder in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go&rsquo;s flag package.</p>
+
+<h2>USAGE</h2>
+
+<pre><code>findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
+</code></pre>
+
+<p>Version 0.0.1</p>
+
+<h2>OPTIONS</h2>
+
+<table>
+<thead>
+<tr>
+<th>flags</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>-d</td>
+<td>find directories only</td>
+</tr>
+
+<tr>
+<td>-f</td>
+<td>find files only</td>
+</tr>
+
+<tr>
+<td>-F</td>
+<td>list full path for files found</td>
+</tr>
+
+<tr>
+<td>-h</td>
+<td>display this help message</td>
+</tr>
+
+<tr>
+<td>-p</td>
+<td>find file(s) based on basename prefix</td>
+</tr>
+
+<tr>
+<td>-s</td>
+<td>find file(s) based on basename suffix</td>
+</tr>
+
+<tr>
+<td>-v</td>
+<td>display version message</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Installation</h2>
+
+<p><em>findfile</em> is go get-able.</p>
+
+<pre><code>    go get github.com/rsdoiel/findfile/...
+</code></pre>
+</section>
+    <nav><ul>
+<li><a href="/">home</a></li>
+<li><a href="./">findfile</a></li>
+<li><a href="LICENSE">LICENSE</a></li>
+<li><a href="install.html">Install</a></li>
+<li><a href="https://github.com/rsdoiel/findfile">Github</a></li>
+</ul>
+</nav>
+    <footer>
+    <p>copyright &copy; 2016 R. S. Doiel
+See: <a href="LICENSE">LICENSE</a></p>
+
+    </footer>
+</body>
+</html>
