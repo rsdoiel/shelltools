@@ -24,9 +24,9 @@ function MakePage () {
         APP="./bin/mkpage"
     fi
 
-    echo "Rendering $html from $content and $nav"
+    echo "Rendering $html"
     $APP \
-	"title=text:fsutils: simplified file system utilities for the command line" \
+	"title=text:fsutils -- simplified file system utilities for the command line" \
         "nav=$nav" \
         "content=$content" \
 	    "sitebuilt=text:Updated $(date)" \
@@ -48,3 +48,6 @@ echo "Generating pathparts.html"
 MakePage nav.md pathparts.md pathparts.html
 echo "Generating mergepath.html"
 MakePage nav.md mergepath.md mergepath.html
+echo "Generating license.html"
+MakePage nav.md "markdown:$(cat LICENSE)" license.html
+
