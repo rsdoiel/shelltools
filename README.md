@@ -1,20 +1,19 @@
-
 [![Go Report Card](http://goreportcard.com/badge/rsdoiel/fsutils)](http://goreportcard.com/report/rsdoiel/fsutils)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 
 # fsutils
 
-Various utilities for simplifying work on the command line. It includes
-a simple implementation of a file finder in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go's flag package.
+Various utilities for simplifying work on the command line. 
 
++ findfile, finddir
++ mergepath
++ pathparts
 
-## USAGE 
+Compiled versions are provided for Linux (amd64), Mac OS X (amd64),
+Windows 10 (amd64) and Raspbian (ARM6, ARM7). See https://github.com/rsdoiel/fsutils.
 
-	findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
-	finddir [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
-
-Use the "-help" option for a full list of options.
+Use the utilities try "-help" option for a full list of options.
 
 
 ## Installation
@@ -25,4 +24,7 @@ _fsutils_ is go get-able.
     go get github.com/rsdoiel/fsutils/...
 ```
 
-Or grab the pre-compiled binaries at http://github.com/rsdoiel/fsutils/releases/latest
+Or see [INSTALL.md](install.html) for details for installing 
+compiled versions of the programs.
+
+

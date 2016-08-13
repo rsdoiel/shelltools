@@ -36,8 +36,15 @@ function MakePage () {
 
 echo "Checking necessary software is installed"
 softwareCheck mkpage
-echo "Generating website index.html with mkpage"
+echo "Generating website index.html"
 MakePage nav.md README.md index.html
-echo "Generating install.html with mkpage"
+echo "Generating install.html"
 MakePage nav.md INSTALL.md install.html
-
+echo "Generating finddir.html"
+MakePage nav.md finddir.md finddir.html
+echo "Generating findfile.html"
+MakePage nav.md findfile.md findfile.html
+echo "Generating pathparts.html"
+MakePage nav.md pathparts.md pathparts.html
+echo "Generating mergepath.html"
+MakePage nav.md mergepath.md mergepath.html

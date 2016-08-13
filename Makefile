@@ -5,6 +5,8 @@
 build:
 	go build -o bin/findfile cmds/findfile/findfile.go 
 	go build -o bin/finddir	 cmds/finddir/finddir.go 
+	go build -o bin/pathparts cmds/pathparts/pathparts.go 
+	go build -o bin/mergepath	 cmds/mergepath/mergepath.go 
 	./mk-website.bash
 
 save:

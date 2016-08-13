@@ -14,16 +14,18 @@
 
 <h1>fsutils</h1>
 
-<p>Various utilities for simplifying work on the command line. It includes
-a simple implementation of a file finder in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go&rsquo;s flag package.</p>
+<p>Various utilities for simplifying work on the command line.</p>
 
-<h2>USAGE</h2>
+<ul>
+<li>findfile, finddir</li>
+<li>mergepath</li>
+<li>pathparts</li>
+</ul>
 
-<pre><code>findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
-finddir [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
-</code></pre>
+<p>Compiled versions are provided for Linux (amd64), Mac OS X (amd64),
+Windows 10 (amd64) and Raspbian (ARM6, ARM7). See <a href="https://github.com/rsdoiel/fsutils">https://github.com/rsdoiel/fsutils</a>.</p>
 
-<p>Use the &ldquo;-help&rdquo; option for a full list of options.</p>
+<p>Use the utilities try &ldquo;-help&rdquo; option for a full list of options.</p>
 
 <h2>Installation</h2>
 
@@ -32,13 +34,18 @@ finddir [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
 <pre><code>    go get github.com/rsdoiel/fsutils/...
 </code></pre>
 
-<p>Or grab the pre-compiled binaries at <a href="http://github.com/rsdoiel/fsutils/releases/latest">http://github.com/rsdoiel/fsutils/releases/latest</a></p>
+<p>Or see <a href="install.html">INSTALL.md</a> for details for installing
+compiled versions of the programs.</p>
 </section>
     <nav><ul>
 <li><a href="/">home</a></li>
 <li><a href="./">fsutils</a></li>
 <li><a href="LICENSE">LICENSE</a></li>
 <li><a href="install.html">Install</a></li>
+<li><a href="findfile.html">findfile</a></li>
+<li><a href="finddir.html">finddir</a></li>
+<li><a href="mergepath.html">mergepath</a></li>
+<li><a href="pathparts.html">pathparts</a></li>
 <li><a href="https://github.com/rsdoiel/fsutils">Github</a></li>
 </ul>
 </nav>
