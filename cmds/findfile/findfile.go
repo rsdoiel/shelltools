@@ -45,10 +45,10 @@ import (
 	"time"
 )
 
-const version = "0.0.9"
+const version = "v0.0.11"
 
 var (
-	help                 bool
+	showHelp             bool
 	showVersion          bool
 	showLicense          bool
 	showModificationTime bool
@@ -113,23 +113,36 @@ func walkPath(docroot string, target string) error {
 }
 
 func init() {
-	flag.BoolVar(&help, "h", false, "display this help message")
+	flag.BoolVar(&showHelp, "h", false, "display this help message")
+	flag.BoolVar(&showHelp, "help", false, "display this help message")
 	flag.BoolVar(&showVersion, "v", false, "display version message")
+	flag.BoolVar(&showVersion, "version", false, "display version message")
 	flag.BoolVar(&showLicense, "l", false, "display license information")
+	flag.BoolVar(&showLicense, "license", false, "display license information")
 	flag.BoolVar(&showModificationTime, "m", false, "display file modification time before the path")
+	flag.BoolVar(&showModificationTime, "mod-time", false, "display file modification time before the path")
 	flag.BoolVar(&stopOnErrors, "e", false, "Stop walk on file system errors (e.g. permissions)")
+	flag.BoolVar(&stopOnErrors, "error-stop", false, "Stop walk on file system errors (e.g. permissions)")
 	flag.BoolVar(&findPrefix, "p", false, "find file(s) based on basename prefix")
+	flag.BoolVar(&findPrefix, "prefix", false, "find file(s) based on basename prefix")
 	flag.BoolVar(&findContains, "c", false, "find file(s) based on basename containing text")
+	flag.BoolVar(&findContains, "contains", false, "find file(s) based on basename containing text")
 	flag.BoolVar(&findSuffix, "s", false, "find file(s) based on basename suffix")
-	flag.BoolVar(&findAll, "a", false, "find all files")
-	flag.BoolVar(&outputFullPath, "F", false, "list full path for files found")
+	flag.BoolVar(&findSuffix, "suffix", false, "find file(s) based on basename suffix")
+	flag.BoolVar(&outputFullPath, "f", false, "list full path for files found")
+	flag.BoolVar(&outputFullPath, "full-path", false, "list full path for files found")
 	flag.IntVar(&optDepth, "d", 0, "Limit depth of directories walked")
+	flag.IntVar(&optDepth, "depth", 0, "Limit depth of directories walked")
 	pathSep = string(os.PathSeparator)
 }
 
 func main() {
 	flag.Parse()
 	args := flag.Args()
+
+	if findPrefix == false && findSuffix == false && findContains == false {
+		findAll = true
+	}
 
 	if showVersion == true {
 		fmt.Printf("Version %s\n", version)
@@ -171,17 +184,19 @@ func main() {
 		os.Exit(0)
 	}
 
-	if help == true || (findAll == false && len(args) == 0) {
+	if showHelp == true || (findAll == false && len(args) == 0) {
 		fmt.Printf(`USAGE findfile [OPTIONS] [TARGET_FILENAME] [DIRECTORIES_TO_SEARCH]
 
   Finds files based on matching prefix, suffix or contained text in base filename.
 
 `)
 		flag.VisitAll(func(f *flag.Flag) {
-			fmt.Printf("    -%s  (defaults to %s) %s\n", f.Name, f.DefValue, f.Usage)
+			if len(f.Name) > 1 {
+				fmt.Printf("    -%s, -%s\t%s\n", f.Name[0:1], f.Name, f.Usage)
+			}
 		})
-		fmt.Printf(" Version %s\n", version)
-		if help == false && len(args) == 0 {
+		fmt.Printf("\n\nVersion %s\n", version)
+		if showHelp == false {
 			os.Exit(1)
 		}
 		os.Exit(0)

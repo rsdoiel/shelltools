@@ -12,19 +12,8 @@ A simple implementation of a file finder in go. It demonstrates walking a file p
 
 	findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
 
-Version 0.0.1
+Use the "-help" option for a full list of options.
 
-## OPTIONS
-
- flags | description
--------|---------------------------------------
- -d    | find directories only
- -f    | find files only
- -F    | list full path for files found
- -h    | display this help message
- -p    | find file(s) based on basename prefix
- -s    | find file(s) based on basename suffix
- -v    | display version message
 
 ## Installation
 
@@ -34,3 +23,4 @@ _findfile_ is go get-able.
     go get github.com/rsdoiel/findfile/...
 ```
 
+Or grab the pre-compiled binaries at http://github.com/rsdoiel/findfile/releases/latest
