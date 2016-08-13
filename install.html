@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>findfile: simplified commands listing files and directories</title>
+    <title>fsutils: simplified file system utilities for the command line</title>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
     <link href="css/site.css" rel="stylesheet" />
 <head>
 <body>
     <header>
-        <h1>findfile: simplified commands listing files and directories</h1>
+        <h1>fsutils: simplified file system utilities for the command line</h1>
     </header>
     <section><h1>Installation</h1>
 
 <h2>Compiled version</h2>
 
-<p><em>findfile</em> is a command line program run from a shell like Bash. If you download the
-repository a compiled version is in the dist directory. The compiled binary matching
-your computer type and operating system can be copied to a bin directory in your PATH.</p>
+<p><em>fsutils</em> is a collection of command line programs run from a shell like Bash (or Powershell in Windows). If you download the repository a compiled version is in the dist directory. The compiled binary matching your computer type and operating system can be copied to a bin directory in your PATH.</p>
 
-<p>Compiled versions are available for Mac OS X (amd64 processor), Linux (amd64), Windows
-(amd64) and Rapsberry Pi (both ARM6 and ARM7)</p>
+<p>Compiled versions are available for Mac OS X (amd64 processor), Linux (amd64), Windows (amd64) and Rapsberry Pi (both ARM6 and ARM7)</p>
 
 <h3>Mac OS X</h3>
 
 <ol>
-<li>Download <strong>findfile-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/findfile/releases/latest">https://github.com/rsdoiel/findfile/releases/latest</a></li>
-<li>Open a finder window, find and unzip <strong>findfile-binary-release.zip</strong></li>
-<li>Look in the unziped folder and find <em>dist/macosx-amd64/findfile</em></li>
+<li>Download <strong>fsutils-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/fsutils/releases/latest">https://github.com/rsdoiel/fsutils/releases/latest</a></li>
+<li>Open a finder window, find and unzip <strong>fsutils-binary-release.zip</strong></li>
+<li>Look in the unziped folder and find <em>dist/macosx-amd64/</em></li>
 <li>Drag (or copy) <em>findfile</em> and <em>finddir</em> to a &ldquo;bin&rdquo; directory in your path</li>
 <li>Open and &ldquo;Terminal&rdquo; and run <code>findfile -h</code> to confirm you were successful</li>
 </ol>
@@ -33,9 +30,9 @@ your computer type and operating system can be copied to a bin directory in your
 <h3>Windows</h3>
 
 <ol>
-<li>Download <strong>findfile-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/findfile/releases/latest">https://github.com/rsdoiel/findfile/releases/latest</a></li>
-<li>Open the file manager find and unzip <strong>findfile-binary-release.zip</strong></li>
-<li>Look in the unziped folder and find <em>dist/windows-amd64/findfile.exe</em></li>
+<li>Download <strong>fsutils-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/fsutils/releases/latest">https://github.com/rsdoiel/fsutils/releases/latest</a></li>
+<li>Open the file manager find and unzip <strong>fsutils-binary-release.zip</strong></li>
+<li>Look in the unziped folder and find <em>dist/windows-amd64/</em></li>
 <li>Drag (or copy) <em>findfile.exe</em> and <em>finddir.exe</em> to a &ldquo;bin&rdquo; directory in your path</li>
 <li>Open Bash and and run <code>findfile -h</code> to confirm you were successful</li>
 </ol>
@@ -43,10 +40,10 @@ your computer type and operating system can be copied to a bin directory in your
 <h3>Linux</h3>
 
 <ol>
-<li>Download <strong>findfile-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/findfile/releases/latest">https://github.com/rsdoiel/findfile/releases/latest</a></li>
-<li>Find and unzip <strong>findfile-binary-release.zip</strong></li>
-<li>In the unziped directory and find for <em>dist/linux-amd64/findfile</em></li>
-<li>Copy <em>findfile</em> and <em>finddir</em> to a &ldquo;bin&rdquo; directory (e.g. cp ~/Downloads/findfile-binary-release/dist/linux-amd64/findfile ~/bin/)</li>
+<li>Download <strong>fsutils-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/fsutils/releases/latest">https://github.com/rsdoiel/fsutils/releases/latest</a></li>
+<li>Find and unzip <strong>fsutils-binary-release.zip</strong></li>
+<li>In the unziped directory and find for <em>dist/linux-amd64/</em></li>
+<li>Copy <em>findfile</em> and <em>finddir</em> to a &ldquo;bin&rdquo; directory (e.g. cp ~/Downloads/fsutils-binary-release/dist/linux-amd64/* ~/bin/)</li>
 <li>From the shell prompt run <code>findfile -h</code> to confirm you were successful</li>
 </ol>
 
@@ -55,10 +52,10 @@ your computer type and operating system can be copied to a bin directory in your
 <p>If you are using a Raspberry Pi 2 or later use the ARM7 binary, ARM6 is only for the first generaiton Raspberry Pi.</p>
 
 <ol>
-<li>Download <strong>findfile-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/findfile/releases/latest">https://github.com/rsdoiel/findfile/releases/latest</a></li>
-<li>Find and unzip <strong>findfile-binary-release.zip</strong></li>
-<li>In the unziped directory and find for <em>dist/raspberrypi-arm7/findfile</em></li>
-<li>Copy <em>findfile</em> and <em>finddir</em> to a &ldquo;bin&rdquo; directory (e.g. cp ~/Downloads/findfile-binary-release/dist/raspberrypi-arm7/findfile ~/bin/)
+<li>Download <strong>fsutils-binary-release.zip</strong> from <a href="https://github.com/rsdoiel/fsutils/releases/latest">https://github.com/rsdoiel/fsutils/releases/latest</a></li>
+<li>Find and unzip <strong>fsutils-binary-release.zip</strong></li>
+<li>In the unziped directory and find for <em>dist/raspberrypi-arm7/</em></li>
+<li>Copy <em>findfile</em> and <em>finddir</em> to a &ldquo;bin&rdquo; directory (e.g. cp ~/Downloads/fsutils-binary-release/dist/raspberrypi-arm7/* ~/bin/)
 
 <ul>
 <li>if you are using an original Raspberry Pi you should copy the ARM6 version instead</li>
@@ -68,17 +65,17 @@ your computer type and operating system can be copied to a bin directory in your
 
 <h2>Compiling from source</h2>
 
-<p>If you have go v1.6.2 or better installed then should be able to &ldquo;go get&rdquo; to install all the <strong>findfile</strong> utilities and
+<p>If you have go v1.6.2 or better installed then should be able to &ldquo;go get&rdquo; to install all the <strong>fsutils</strong> utilities and
 package. You will need the GOBIN environment variable set. In this example I&rsquo;ve set it to $HOME/bin.</p>
 
 <pre><code>    GOBIN=$HOME/bin
-    go get github.com/rsdoiel/findfile/...
+    go get github.com/rsdoiel/fsutils/...
 </code></pre>
 
 <p>or</p>
 
-<pre><code>    git clone https://github.com/rsdoiel/findfile src/github.com/rsdoiel/findfile
-    cd src/github.com/rsdoiel/findfile
+<pre><code>    git clone https://github.com/rsdoiel/fsutils src/github.com/rsdoiel/fsutils
+    cd src/github.com/rsdoiel/fsutils
     make
     make test
     make install
@@ -86,10 +83,10 @@ package. You will need the GOBIN environment variable set. In this example I&rsq
 </section>
     <nav><ul>
 <li><a href="/">home</a></li>
-<li><a href="./">findfile</a></li>
+<li><a href="./">fsutils</a></li>
 <li><a href="LICENSE">LICENSE</a></li>
 <li><a href="install.html">Install</a></li>
-<li><a href="https://github.com/rsdoiel/findfile">Github</a></li>
+<li><a href="https://github.com/rsdoiel/fsutils">Github</a></li>
 </ul>
 </nav>
     <footer>

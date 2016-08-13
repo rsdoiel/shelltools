@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>findfile: simplified commands listing files and directories</title>
+    <title>fsutils: simplified file system utilities for the command line</title>
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
     <link href="css/site.css" rel="stylesheet" />
 <head>
 <body>
     <header>
-        <h1>findfile: simplified commands listing files and directories</h1>
+        <h1>fsutils: simplified file system utilities for the command line</h1>
     </header>
-    <section><p><a href="http://goreportcard.com/report/rsdoiel/findfile"><img src="http://goreportcard.com/badge/rsdoiel/findfile" alt="Go Report Card" /></a>
+    <section><p><a href="http://goreportcard.com/report/rsdoiel/fsutils"><img src="http://goreportcard.com/badge/rsdoiel/fsutils" alt="Go Report Card" /></a>
 <a href="https://opensource.org/licenses/BSD-3-Clause"><img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" alt="License" /></a></p>
 
-<h1>findfile</h1>
+<h1>fsutils</h1>
 
-<p>A simple implementation of a file finder in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go&rsquo;s flag package.</p>
+<p>Various utilities for simplifying work on the command line. It includes
+a simple implementation of a file finder in go. It demonstrates walking a file path, making choices based on file type, and works as an example of using Go&rsquo;s flag package.</p>
 
 <h2>USAGE</h2>
 
 <pre><code>findfile [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
+finddir [OPTIONS] TARGET_FILENAME [DIRECTORIES_TO_SEARCH]
 </code></pre>
 
 <p>Use the &ldquo;-help&rdquo; option for a full list of options.</p>
 
 <h2>Installation</h2>
 
-<p><em>findfile</em> is go get-able.</p>
+<p><em>fsutils</em> is go get-able.</p>
 
-<pre><code>    go get github.com/rsdoiel/findfile/...
+<pre><code>    go get github.com/rsdoiel/fsutils/...
 </code></pre>
 
-<p>Or grab the pre-compiled binaries at <a href="http://github.com/rsdoiel/findfile/releases/latest">http://github.com/rsdoiel/findfile/releases/latest</a></p>
+<p>Or grab the pre-compiled binaries at <a href="http://github.com/rsdoiel/fsutils/releases/latest">http://github.com/rsdoiel/fsutils/releases/latest</a></p>
 </section>
     <nav><ul>
 <li><a href="/">home</a></li>
-<li><a href="./">findfile</a></li>
+<li><a href="./">fsutils</a></li>
 <li><a href="LICENSE">LICENSE</a></li>
 <li><a href="install.html">Install</a></li>
-<li><a href="https://github.com/rsdoiel/findfile">Github</a></li>
+<li><a href="https://github.com/rsdoiel/fsutils">Github</a></li>
 </ul>
 </nav>
     <footer>
