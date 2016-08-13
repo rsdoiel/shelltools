@@ -19,7 +19,7 @@ publish:
 clean: 
 	if [ -d bin ]; then rm -fR bin; fi
 	if [ -d dist ]; then rm -fR dist; fi
-	if [ -f findfile-binary-release.zip ]; then rm -f findfile-binary-release.zip; fi
+	if [ -f fsutils-binary-release.zip ]; then rm -f fsutils-binary-release.zip; fi
 
 install:
 	env GOBIN=$(HOME)/bin go install cmds/findfile/findfile.go

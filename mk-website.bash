@@ -26,7 +26,7 @@ function MakePage () {
 
     echo "Rendering $html from $content and $nav"
     $APP -m \
-	"title=string:findfile: simplified commands listing files and directories" \
+	"title=string:fsutils: simplified file system utilities for the command line" \
         "nav=$nav" \
         "content=$content" \
 	    "sitebuilt=string:Updated $(date)" \
