@@ -26,6 +26,8 @@ clean:
 install:
 	env GOBIN=$(HOME)/bin go install cmds/findfile/findfile.go
 	env GOBIN=$(HOME)/bin go install cmds/finddir/finddir.go
+	env GOBIN=$(HOME)/bin go install cmds/pathparts/pathparts.go
+	env GOBIN=$(HOME)/bin go install cmds/mergepath/mergepath.go
 
 release:
 	./mk-release.bash
