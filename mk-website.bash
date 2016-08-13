@@ -25,11 +25,11 @@ function MakePage () {
     fi
 
     echo "Rendering $html from $content and $nav"
-    $APP -m \
-	"title=string:fsutils: simplified file system utilities for the command line" \
+    $APP \
+	"title=text:fsutils: simplified file system utilities for the command line" \
         "nav=$nav" \
         "content=$content" \
-	    "sitebuilt=string:Updated $(date)" \
+	    "sitebuilt=text:Updated $(date)" \
         "copyright=copyright.md" \
         page.tmpl > $html
 }
