@@ -1,7 +1,7 @@
 
 + [home](/)
 + [fsutils](./)
-+ [LICENSE](LICENSE)
++ [LICENSE](license.html)
 + [Install](install.html)
 + [findfile](findfile.html)
 + [finddir](finddir.html)
