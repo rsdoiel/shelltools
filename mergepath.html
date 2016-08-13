@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fsutils: simplified file system utilities for the command line</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href="css/site.css" rel="stylesheet" />
+<head>
+<body>
+    <header>
+        <h1>fsutils: simplified file system utilities for the command line</h1>
+    </header>
+    <section><p><a href="http://goreportcard.com/report/rsdoiel/fsutils"><img src="http://goreportcard.com/badge/rsdoiel/fsutils" alt="Go Report Card" /></a>
+<a href="https://opensource.org/licenses/BSD-2-Clause"><img src="https://img.shields.io/badge/License-BSD%202--Clause-blue.svg" alt="License" /></a></p>
+
+<h1>mergepath</h1>
+
+<p>A small utility to merge PATH lists across different platforms (e.g. Linux, OS X).</p>
+
+<h2>USAGE</h2>
+
+<pre><code class="language-shell">    mergepath [OPTIONS] PATH_TO_ADD PATH_TO_MODIFY
+</code></pre>
+
+<h2>EXAMPLES</h2>
+
+<p>append work directory to existing path:</p>
+
+<pre><code class="language-shell">    mergepath . $PATH
+</code></pre>
+
+<p>prepend working directory to existing path:</p>
+
+<pre><code class="language-shell">    mergepath -P . $PATH
+</code></pre>
+
+<h2>OPTIONS</h2>
+
+<pre><code>    -a, -append	Append the directory to the path removing any duplication
+    -c, -clip	Remove a directory from the path
+    -d, -directory	The directory you want to add to the path.
+    -e, -envpath	The path you want to merge with.
+    -h, -help	This help document.
+    -p, -prepend	Prepend the directory to the path removing any duplication
+</code></pre>
+</section>
+    <nav><ul>
+<li><a href="/">home</a></li>
+<li><a href="./">fsutils</a></li>
+<li><a href="LICENSE">LICENSE</a></li>
+<li><a href="install.html">Install</a></li>
+<li><a href="findfile.html">findfile</a></li>
+<li><a href="finddir.html">finddir</a></li>
+<li><a href="mergepath.html">mergepath</a></li>
+<li><a href="pathparts.html">pathparts</a></li>
+<li><a href="https://github.com/rsdoiel/fsutils">Github</a></li>
+</ul>
+</nav>
+    <footer>
+    <p>copyright &copy; 2016 R. S. Doiel
+See: <a href="LICENSE">LICENSE</a></p>
+
+    </footer>
+</body>
+</html>

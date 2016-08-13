@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fsutils: simplified file system utilities for the command line</title>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href="css/site.css" rel="stylesheet" />
+<head>
+<body>
+    <header>
+        <h1>fsutils: simplified file system utilities for the command line</h1>
+    </header>
+    <section><p><a href="http://goreportcard.com/report/rsdoiel/fsutils"><img src="http://goreportcard.com/badge/rsdoiel/fsutils" alt="Go Report Card" /></a>
+<a href="https://opensource.org/licenses/BSD-2-Clause"><img src="https://img.shields.io/badge/License-BSD%202--Clause-blue.svg" alt="License" /></a></p>
+
+<h1>findfile</h1>
+
+<p>Lists files recursively (including in subdirectories). Can be constrained
+by prefix, suffix and basename contents (e.g. contains).</p>
+
+<h2>USAGE</h2>
+
+<pre><code>    findfile [OPTIONS] [TARGET_FILENAME] [DIRECTORIES_TO_SEARCH]
+</code></pre>
+
+<p>Finds files based on matching prefix, suffix or contained text in base filename.</p>
+
+<pre><code>    -c, -contains	find file(s) based on basename containing text
+    -d, -depth	    limit depth of directories walked
+    -e, -error-stop	Stop walk on file system errors (e.g. permissions)
+    -f, -full-path	list full path for files found
+    -h, -help	    display this help message
+    -l, -license	display license information
+    -m, -mod-time	display file modification time before the path
+    -p, -prefix	    find file(s) based on basename prefix
+    -s, -suffix	    find file(s) based on basename suffix
+    -v, -version	display version message
+</code></pre>
+</section>
+    <nav><ul>
+<li><a href="/">home</a></li>
+<li><a href="./">fsutils</a></li>
+<li><a href="LICENSE">LICENSE</a></li>
+<li><a href="install.html">Install</a></li>
+<li><a href="findfile.html">findfile</a></li>
+<li><a href="finddir.html">finddir</a></li>
+<li><a href="mergepath.html">mergepath</a></li>
+<li><a href="pathparts.html">pathparts</a></li>
+<li><a href="https://github.com/rsdoiel/fsutils">Github</a></li>
+</ul>
+</nav>
+    <footer>
+    <p>copyright &copy; 2016 R. S. Doiel
+See: <a href="LICENSE">LICENSE</a></p>
+
+    </footer>
+</body>
+</html>
