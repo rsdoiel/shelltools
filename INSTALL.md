@@ -45,21 +45,42 @@ If you are using a Raspberry Pi 2 or later use the ARM7 binary, ARM6 is only for
 
 ## Compiling from source
 
-If you have go v1.6.2 or better installed then should be able to "go get" to install all the **fsutils** utilities and
+If you have go v1.7 or better installed then should be able to "go get" to install all the **fsutils** utilities and
 package. You will need the GOBIN environment variable set. In this example I've set it to $HOME/bin.
 
-```
+```bash
     GOBIN=$HOME/bin
     go get github.com/rsdoiel/fsutils/...
 ```
 
-or
+Or for Windows 10 Powershell (assumes the Windows versions of Go and Git are previously installed)
 
+
+```powershell
+    $Env:GOPATH = "$HOME"
+    go get github.com/rsdoiel/fsutils/...
 ```
+
+or to install from source
+
+```bash
     git clone https://github.com/rsdoiel/fsutils src/github.com/rsdoiel/fsutils
     cd src/github.com/rsdoiel/fsutils
     make
     make test
     make install
 ```
+
+Or for Windows 10 Powershell
+
+```powershell
+    $Env:GOBIN = "$HOME\bin"
+    git clone https://github.com/rsdoiel/fsutils src/github.com/rsdoiel/fsutils
+    cd src\github.com\rsdoiel\fsutils
+    go install cmds\finddir\finddir.go
+    go install cmds\findfile\filefile.go
+    go install cmds\mergepath\mergepath.go
+    go install cmds\pathparts\pathparts.go
+```
+
 

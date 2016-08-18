@@ -65,20 +65,37 @@
 
 <h2>Compiling from source</h2>
 
-<p>If you have go v1.6.2 or better installed then should be able to &ldquo;go get&rdquo; to install all the <strong>fsutils</strong> utilities and
+<p>If you have go v1.7 or better installed then should be able to &ldquo;go get&rdquo; to install all the <strong>fsutils</strong> utilities and
 package. You will need the GOBIN environment variable set. In this example I&rsquo;ve set it to $HOME/bin.</p>
 
-<pre><code>    GOBIN=$HOME/bin
+<pre><code class="language-bash">    GOBIN=$HOME/bin
     go get github.com/rsdoiel/fsutils/...
 </code></pre>
 
-<p>or</p>
+<p>Or for Windows 10 Powershell (assumes the Windows versions of Go and Git are previously installed)</p>
 
-<pre><code>    git clone https://github.com/rsdoiel/fsutils src/github.com/rsdoiel/fsutils
+<pre><code class="language-powershell">    $Env:GOPATH = &quot;$HOME&quot;
+    go get github.com/rsdoiel/fsutils/...
+</code></pre>
+
+<p>or to install from source</p>
+
+<pre><code class="language-bash">    git clone https://github.com/rsdoiel/fsutils src/github.com/rsdoiel/fsutils
     cd src/github.com/rsdoiel/fsutils
     make
     make test
     make install
+</code></pre>
+
+<p>Or for Windows 10 Powershell</p>
+
+<pre><code class="language-powershell">    $Env:GOBIN = &quot;$HOME\bin&quot;
+    git clone https://github.com/rsdoiel/fsutils src/github.com/rsdoiel/fsutils
+    cd src\github.com\rsdoiel\fsutils
+    go install cmds\finddir\finddir.go
+    go install cmds\findfile\filefile.go
+    go install cmds\mergepath\mergepath.go
+    go install cmds\pathparts\pathparts.go
 </code></pre>
 </section>
     <nav><ul>
