@@ -1,5 +1,5 @@
 body {
-    font-size: 16px;
+    font-size: calc(1em + 1vw);
     font-family: 'Noto Sans', sans-serif;
     padding: 0.24em;
     padding: 0.12em;
