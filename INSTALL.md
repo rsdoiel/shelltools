@@ -49,7 +49,7 @@ If you have go v1.7 or better installed then should be able to "go get" to insta
 package. You will need the GOBIN environment variable set. In this example I've set it to $HOME/bin.
 
 ```bash
-    GOBIN=$HOME/bin
+    export GOBIN=$HOME/bin
     go get github.com/rsdoiel/shelltools/...
 ```
 
@@ -61,7 +61,7 @@ Or for Windows 10 Powershell (assumes the Windows versions of Go and Git are pre
     go get github.com/rsdoiel/shelltools/...
 ```
 
-or to install from source
+or to install from source on Linux/Unix systems
 
 ```bash
     git clone https://github.com/rsdoiel/shelltools src/github.com/rsdoiel/shelltools
@@ -81,6 +81,9 @@ Or for Windows 10 Powershell
     go install cmds\findfile\filefile.go
     go install cmds\mergepath\mergepath.go
     go install cmds\pathparts\pathparts.go
+    go install cmds\reldate\reldate.go
+    go install cmds\timefmt\timefmt.go
+    go install cmds\urlparse\urlparse.go
 ```
 
 

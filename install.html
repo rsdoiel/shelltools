@@ -67,7 +67,7 @@
 <p>If you have go v1.7 or better installed then should be able to &ldquo;go get&rdquo; to install all the <strong>shelltools</strong> utilities and
 package. You will need the GOBIN environment variable set. In this example I&rsquo;ve set it to $HOME/bin.</p>
 
-<pre><code class="language-bash">    GOBIN=$HOME/bin
+<pre><code class="language-bash">    export GOBIN=$HOME/bin
     go get github.com/rsdoiel/shelltools/...
 </code></pre>
 
@@ -77,7 +77,7 @@ package. You will need the GOBIN environment variable set. In this example I&rsq
     go get github.com/rsdoiel/shelltools/...
 </code></pre>
 
-<p>or to install from source</p>
+<p>or to install from source on Linux/Unix systems</p>
 
 <pre><code class="language-bash">    git clone https://github.com/rsdoiel/shelltools src/github.com/rsdoiel/shelltools
     cd src/github.com/rsdoiel/shelltools
@@ -95,6 +95,9 @@ package. You will need the GOBIN environment variable set. In this example I&rsq
     go install cmds\findfile\filefile.go
     go install cmds\mergepath\mergepath.go
     go install cmds\pathparts\pathparts.go
+    go install cmds\reldate\reldate.go
+    go install cmds\timefmt\timefmt.go
+    go install cmds\urlparse\urlparse.go
 </code></pre>
 </section>
     <nav><ul>
