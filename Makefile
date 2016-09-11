@@ -11,6 +11,7 @@ build:
 	go build -o bin/reldate cmds/reldate/reldate.go 
 	go build -o bin/range cmds/range/range.go 
 	go build -o bin/timefmt cmds/timefmt/timefmt.go 
+	go build -o bin/urlparse cmds/urlparse/urlparse.go 
 	./mk-website.bash
 
 website:
@@ -38,6 +39,7 @@ install:
 	env GOBIN=$(HOME)/bin go install cmds/reldate/reldate.go
 	env GOBIN=$(HOME)/bin go install cmds/range/range.go
 	env GOBIN=$(HOME)/bin go install cmds/timefmt/timefmt.go
+	env GOBIN=$(HOME)/bin go install cmds/urlparse/urlparse.go
 
 release:
 	./mk-release.bash

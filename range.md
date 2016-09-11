@@ -1,8 +1,4 @@
 
-[![Go Report Card](http://goreportcard.com/badge/rsdoiel/range)](http://goreportcard.com/report/rsdoiel/range)
-[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
-
-
 # range
 
 Range is a simple utility for shell scripts that emits a list of integers starting with the first command line argument and ending with the last integer command line argument.
@@ -33,17 +29,3 @@ If the first argument is greater than the last then it counts down otherwise it 
 + *-s*, *--start* The starting integer (e.g. 1)
 + *-r*, *--random* Pick a random element from a range 
 
-## Installation
-
-_range_ can be installed with the *go get* command.
-
-```
-    go get github.com/rsdoiel/range/...
-```
-
-
-
-## LICENSE
-
-copyright (c) 2014 All rights reserved.
-Released under the [Simplified BSD License](http://opensource.org/licenses/bsd-license.php)

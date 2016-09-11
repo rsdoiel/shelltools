@@ -10,5 +10,6 @@
 + [range](range.html)
 + [reldate](reldate.html)
 + [timefmt](timefmt.html)
++ [urlparse](urlparse.html)
 + [Github](https://github.com/rsdoiel/shelltools)
 

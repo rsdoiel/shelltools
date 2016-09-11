@@ -1,7 +1,4 @@
 
-[![Go Report Card](http://goreportcard.com/badge/rsdoiel/reldate)](http://goreportcard.com/report/rsdoiel/reldate)
-[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
-
 # reldate
 
 A small command line utility which returns the relative date in YYYY-MM-DD format. This is helpful
@@ -79,16 +76,3 @@ will yeild
 As that is the Monday of the week containing 2015-02-10. Weekday names case insensitive and can be the first three letters
 of the English names or full English names (e.g. Monday, monday, Mon, mon).
 
-## Installation
-
-_reldate_ can be installed with the *go get* command.
-
-```
-    go get github.com/rsdoiel/reldate/...
-```
-
-
-## License
-
-copyright (c) 2014 All rights reserved.
-Released under the [Simplified BSD License](http://opensource.org/licenses/bsd-license.php)

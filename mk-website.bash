@@ -42,20 +42,12 @@ echo "Generating website index.html"
 MakePage nav.md README.md index.html
 echo "Generating install.html"
 MakePage nav.md INSTALL.md install.html
-echo "Generating finddir.html"
-MakePage nav.md finddir.md finddir.html
-echo "Generating findfile.html"
-MakePage nav.md findfile.md findfile.html
-echo "Generating pathparts.html"
-MakePage nav.md pathparts.md pathparts.html
-echo "Generating mergepath.html"
-MakePage nav.md mergepath.md mergepath.html
-echo "Generating range.html"
-MakePage nav.md range.md range.html
-echo "Generating reldate.html"
-MakePage nav.md reldate.md reldate.html
-echo "Generating timefmt.html"
-MakePage nav.md timefmt.md timefmt.html
 echo "Generating license.html"
 MakePage nav.md "markdown:$(cat LICENSE)" license.html
+
+# Generate the individual command docuumentation pages
+for BNAME in finddir findfile pathparts mergepath range reldate urlparse; do
+    echo "Generating $BNAME.html"
+    MakePage nav.md "$BNAME.md" "$BNAME.html"
+done
 

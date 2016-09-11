@@ -1,6 +1,3 @@
-[![Go Report Card](http://goreportcard.com/badge/rsdoiel/fsutils)](http://goreportcard.com/report/rsdoiel/fsutils)
-[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](https://opensource.org/licenses/BSD-2-Clause)
-
 
 # findfile
 

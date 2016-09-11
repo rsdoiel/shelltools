@@ -1,5 +1,12 @@
 
+# next
+
++ normalize command line options between all tools where possible
++ normalize help display
++ create a shelltools package for common CLI functionality
+    + Usage(), License(), Version()
+
 # someday maybe
 
-+ Follow symbolic links and return absolute paths
-+ merge with other utilities into a common bundle
++ Include demo Bash scripts
+

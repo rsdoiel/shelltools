@@ -1,7 +1,6 @@
 [![Go Report Card](http://goreportcard.com/badge/rsdoiel/shelltools)](http://goreportcard.com/report/rsdoiel/shelltools)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-
 # shelltools
 
 Various utilities for simplifying work on the command line. 
@@ -13,6 +12,7 @@ Various utilities for simplifying work on the command line.
 + [range](range.html) - emit a range of integers (useful for numbered loops in Bash)
 + [reldate](reldate.html) - display a relative date in YYYY-MM-DD format
 + [timefmt](timefmt.html) - format a time value based on Golang's time format language
++ [urlparse](urlparse.html) - split a URL into parts
 
 Compiled versions are provided for Linux (amd64), Mac OS X (amd64),
 Windows 10 (amd64) and Raspbian (ARM6, ARM7). See https://github.com/rsdoiel/shelltools.
