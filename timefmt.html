@@ -8,33 +8,21 @@
     <header>
         <h1>shelltools -- a small collection of file and shell utilities</h1>
     </header>
-    <section><p><a href="http://goreportcard.com/report/rsdoiel/fsutils"><img src="http://goreportcard.com/badge/rsdoiel/fsutils" alt="Go Report Card" /></a>
-<a href="https://opensource.org/licenses/BSD-3-Clause"><img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" alt="License" /></a></p>
+    <section><h1>timefmt</h1>
 
-<h1>Path Parts</h1>
+<p>Formats timestamps based on Golang&rsquo;s <a href="https://golang.org/pkg/time/#Time.Format">time formatting</a>.</p>
 
-<p>Extract the parts of a path string.</p>
+<h2>Examples</h2>
 
-<ul>
-<li>directory</li>
-<li>basename (includes extension)</li>
-<li>extension</li>
-</ul>
-
-<h2>USAGE</h2>
-
-<pre><code class="language-shell">    pathparts [OPTIONS] TARGET_PATH
+<pre><code>    timefmt -input &quot;2006-01-02&quot; -output &quot;01/02/2006&quot; &quot;2016-07-02&quot;
 </code></pre>
 
-<p>Extract the path parts from options chosen.</p>
+<p>Outputs <em>07/02/2016</em></p>
 
-<pre><code>    -b, -basename	show basename
-    -d, -directory	show directory
-    -e, -extension	show extension
-    -h, -help	    display help
-    -l, -license	display license
-    -v, -version	display version
+<pre><code>    timefmt -input mysql -output RFC822  &quot;2016-07-02 08:08:08&quot;
 </code></pre>
+
+<p>Outputs <em>02 Jul 16 08:08 UTC</em></p>
 </section>
     <nav><ul>
 <li><a href="/">home</a></li>
