@@ -7,6 +7,7 @@
 + [finddir](finddir.html)
 + [mergepath](mergepath.html)
 + [pathparts](pathparts.html)
++ [range](range.html)
 + [reldate](reldate.html)
 + [Github](https://github.com/rsdoiel/shelltools)
 

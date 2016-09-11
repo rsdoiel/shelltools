@@ -52,6 +52,8 @@ echo "Generating mergepath.html"
 MakePage nav.md mergepath.md mergepath.html
 echo "Generating reldate.html"
 MakePage nav.md reldate.md reldate.html
+echo "Generating range.html"
+MakePage nav.md range.md range.html
 echo "Generating license.html"
 MakePage nav.md "markdown:$(cat LICENSE)" license.html
 

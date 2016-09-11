@@ -6,10 +6,12 @@
 
 Various utilities for simplifying work on the command line. 
 
-+ findfile, finddir
-+ mergepath
-+ pathparts
-+ reldate
++ [findfile](findfile.html)
++ [finddir](finddir.html)
++ [mergepath](mergepath.html)
++ [pathparts](pathparts.html)
++ [range](range.html)
++ [reldate](reldate.html)
 
 Compiled versions are provided for Linux (amd64), Mac OS X (amd64),
 Windows 10 (amd64) and Raspbian (ARM6, ARM7). See https://github.com/rsdoiel/shelltools.
