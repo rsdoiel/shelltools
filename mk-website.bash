@@ -32,7 +32,6 @@ function MakePage () {
         "nav=$nav" \
         "content=$content" \
 	    "sitebuilt=text:Updated $(date)" \
-        "copyright=copyright.md" \
         page.tmpl > $html
 }
 

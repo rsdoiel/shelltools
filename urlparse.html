@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>shelltools -- a small collection of file and shell utilities</title>
+    <link href="css/site.css" rel="stylesheet" />
+<head>
+<body>
+    <header>
+        <h1>shelltools -- a small collection of file and shell utilities</h1>
+    </header>
+    <section><h1>urlparse</h1>
+
+<h1>Overview</h1>
+
+<p>A commandline utility that returns a delimited list of URL parts suitable
+for use with other Unix utilities like <em>cut</em>.</p>
+
+<h2>USAGE</h2>
+
+<pre><code>urlparse [OPTIONS] URL_TO_PARSE
+</code></pre>
+
+<p>Display the parsed URL as delimited fields on one line.</p>
+
+<h2>EXAMPLES</h2>
+
+<p>Get protocol. Returns &ldquo;http&rdquo;.</p>
+
+<pre><code> urlparse --protocol http://example.com/my/page.html
+</code></pre>
+
+<p>Get host or domain name.  Returns &ldquo;example.com&rdquo;.</p>
+
+<pre><code> urlparse --host http://example.com/my/page.html
+</code></pre>
+
+<p>Get path. Returns &ldquo;/my/page.html&rdquo;.</p>
+
+<pre><code> urlparse --path http://example.com/my/page.html
+</code></pre>
+
+<p>Get basename. Returns &ldquo;page.html&rdquo;.</p>
+
+<pre><code> urlparse --basename http://example.com/my/page.html
+</code></pre>
+
+<p>Get extension. Returns &ldquo;.html&rdquo;.</p>
+
+<pre><code> urlparse --extension http://example.com/my/page.html
+</code></pre>
+
+<h2>OPTIONS</h2>
+
+<p>Without options urlparse returns protocol, host and path fields
+separated by a tab.</p>
+
+<ul>
+<li>-b, -basename Display the base filename at the end of the path.</li>
+<li>-D, -delimiter Set the output delimited for parsed display. (defaults to tab)</li>
+<li>-d, &ndash;directory Display all but the last element of the path</li>
+<li>-e, -extension Display the filename extension (e.g. .html).</li>
+<li>-H, -host Display the host (domain name) in URL.</li>
+<li>-p, -path Display the path after the hostname.</li>
+
+<li><p>-P, -protocol Display the protocol of URL (defaults to http)</p></li>
+
+<li><p>-h, -help Display this help document.</p></li>
+
+<li><p>-l, -license Display license information.</p></li>
+
+<li><p>-v, -version Display version information.</p></li>
+</ul>
+</section>
+    <nav><ul>
+<li><a href="/">home</a></li>
+<li><a href="./">shelltools</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="install.html">Install</a></li>
+<li><a href="findfile.html">findfile</a></li>
+<li><a href="finddir.html">finddir</a></li>
+<li><a href="mergepath.html">mergepath</a></li>
+<li><a href="pathparts.html">pathparts</a></li>
+<li><a href="range.html">range</a></li>
+<li><a href="reldate.html">reldate</a></li>
+<li><a href="timefmt.html">timefmt</a></li>
+<li><a href="urlparse.html">urlparse</a></li>
+<li><a href="https://github.com/rsdoiel/shelltools">Github</a></li>
+</ul>
+</nav>
+    <footer>
+    copyright (c) 2014-2016 R. S. Doiel<br />
+    see: <a href="license.html">LICENSE</a>
+    </footer>
+</body>
+</html>

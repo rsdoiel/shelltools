@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>shelltools -- a small collection of file and shell utilities</title>
+    <link href="css/site.css" rel="stylesheet" />
+<head>
+<body>
+    <header>
+        <h1>shelltools -- a small collection of file and shell utilities</h1>
+    </header>
+    <section><h1>range</h1>
+
+<p>Range is a simple utility for shell scripts that emits a list of integers starting with the first command line argument and ending with the last integer command line argument.</p>
+
+<p>If the first argument is greater than the last then it counts down otherwise it counts up.</p>
+
+<h2>USAGE</h2>
+
+<pre><code>    range [OPTIONS] STARTING_INTEGER ENDING_INTEGER [INCREMENT_INTEGER]
+</code></pre>
+
+<h2>EXAMPLES</h2>
+
+<ul>
+<li>Count from one through five: range 1 5</li>
+<li>Count from negative two to six: range &ndash; -2 6</li>
+<li>Count even number from two to ten: range &ndash;increment=2 2 10</li>
+<li>Count down from ten to one: range 10 1</li>
+<li>Pick a value from a range: range -r 0 10</li>
+</ul>
+
+<h2>OPTIONS</h2>
+
+<ul>
+<li><em>-e</em>, <em>&ndash;end</em> The ending integer (e.g. 10)</li>
+<li><em>-h</em>, <em>&ndash;help</em> Display this help document.</li>
+<li><em>-i</em>, <em>&ndash;increment</em> The non-zero integer value to increment by (e.g. 1 or -1)</li>
+<li><em>-s</em>, <em>&ndash;start</em> The starting integer (e.g. 1)</li>
+<li><em>-r</em>, <em>&ndash;random</em> Pick a random element from a range</li>
+</ul>
+</section>
+    <nav><ul>
+<li><a href="/">home</a></li>
+<li><a href="./">shelltools</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="install.html">Install</a></li>
+<li><a href="findfile.html">findfile</a></li>
+<li><a href="finddir.html">finddir</a></li>
+<li><a href="mergepath.html">mergepath</a></li>
+<li><a href="pathparts.html">pathparts</a></li>
+<li><a href="range.html">range</a></li>
+<li><a href="reldate.html">reldate</a></li>
+<li><a href="timefmt.html">timefmt</a></li>
+<li><a href="urlparse.html">urlparse</a></li>
+<li><a href="https://github.com/rsdoiel/shelltools">Github</a></li>
+</ul>
+</nav>
+    <footer>
+    copyright (c) 2014-2016 R. S. Doiel<br />
+    see: <a href="license.html">LICENSE</a>
+    </footer>
+</body>
+</html>
