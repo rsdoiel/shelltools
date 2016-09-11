@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PROJECT="shelltools"
+
 function checkApp() {
     APP_NAME=$(which $1)
     if [ "$APP_NAME" = "" ] && [ ! -f "./bin/$1" ]; then
@@ -26,7 +28,7 @@ function MakePage () {
 
     echo "Rendering $html"
     $APP \
-	"title=text:fsutils -- simplified file system utilities for the command line" \
+	"title=text:$PROJECT -- a small collection of file and shell utilities" \
         "nav=$nav" \
         "content=$content" \
 	    "sitebuilt=text:Updated $(date)" \
@@ -48,6 +50,8 @@ echo "Generating pathparts.html"
 MakePage nav.md pathparts.md pathparts.html
 echo "Generating mergepath.html"
 MakePage nav.md mergepath.md mergepath.html
+echo "Generating reldate.html"
+MakePage nav.md reldate.md reldate.html
 echo "Generating license.html"
 MakePage nav.md "markdown:$(cat LICENSE)" license.html
 

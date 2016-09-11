@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>shelltools -- a small collection of file and shell utilities</title>
+    <link href="css/site.css" rel="stylesheet" />
+<head>
+<body>
+    <header>
+        <h1>shelltools -- a small collection of file and shell utilities</h1>
+    </header>
+    <section><p><a href="http://goreportcard.com/report/rsdoiel/reldate"><img src="http://goreportcard.com/badge/rsdoiel/reldate" alt="Go Report Card" /></a>
+<a href="https://opensource.org/licenses/BSD-2-Clause"><img src="https://img.shields.io/badge/License-BSD%202--Clause-blue.svg" alt="License" /></a></p>
+
+<h1>reldate</h1>
+
+<p>A small command line utility which returns the relative date in YYYY-MM-DD format. This is helpful
+when scripting various time relationships.</p>
+
+<h2>Example</h2>
+
+<p>If today was 2014-08-03 and you wanted the date three days in the past try&ndash;</p>
+
+<pre><code>    reldate 3 days
+</code></pre>
+
+<p>The output would be</p>
+
+<pre><code>    2014-08-06
+</code></pre>
+
+<h2>Time units</h2>
+
+<p>Supported time units are</p>
+
+<ul>
+<li>day(s)</li>
+<li>week(s)</li>
+<li>year(s)</li>
+</ul>
+
+<h2>Specifying a date to calucate from</h2>
+
+<p><em>reldate</em> handles dates in the YYYY-MM-DD format (e.g. March 1, 2014 would be 2014-03-01).  By default <em>reldate</em> uses today as
+the date to calculate relative time from.  If you use the <em>&ndash;from</em> option you can it will calculate the relative date from that
+specific date.</p>
+
+<pre><code>    reldate --from=2014-08-03 3 days
+</code></pre>
+
+<p>Will yield</p>
+
+<pre><code>    2014-08-06
+</code></pre>
+
+<h2>Negative increments</h2>
+
+<p>Command line arguments traditionally start with a dash which we also use to denote a nagative number. To tell the command line
+process that to not treat negative numbers as an &ldquo;option&rdquo; preceed your time increment and time unit with a double dash.</p>
+
+<pre><code>   reldate --from=2014-08-03 -- -3 days 
+</code></pre>
+
+<p>Will yield</p>
+
+<pre><code>    2014-07-31
+</code></pre>
+
+<h2>Relative week days</h2>
+
+<p>You can calculate a date from a weekday name (e.g. Saturday, Monday, Tuesday) knowning a day (e.g. 2015-02-10 or the current date of the
+week) occuring in a week.  A common case would be wanting to figure out the Monday date of a week containing 2015-02-10. The week is
+presumed to start on Sunday (i.e. 0) and finish with Saturday (e.g. 6).</p>
+
+<pre><code>    reldate --from=2015-02-10 Monday
+</code></pre>
+
+<p>will yeild</p>
+
+<pre><code>    2015-02-09
+</code></pre>
+
+<p>As that is the Monday of the week containing 2015-02-10. Weekday names case insensitive and can be the first three letters
+of the English names or full English names (e.g. Monday, monday, Mon, mon).</p>
+
+<h2>Installation</h2>
+
+<p><em>reldate</em> can be installed with the <em>go get</em> command.</p>
+
+<pre><code>    go get github.com/rsdoiel/reldate/...
+</code></pre>
+
+<h2>License</h2>
+
+<p>copyright &copy; 2014 All rights reserved.
+Released under the <a href="http://opensource.org/licenses/bsd-license.php">Simplified BSD License</a></p>
+</section>
+    <nav><ul>
+<li><a href="/">home</a></li>
+<li><a href="./">shelltools</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="install.html">Install</a></li>
+<li><a href="findfile.html">findfile</a></li>
+<li><a href="finddir.html">finddir</a></li>
+<li><a href="mergepath.html">mergepath</a></li>
+<li><a href="pathparts.html">pathparts</a></li>
+<li><a href="reldate.html">reldate</a></li>
+<li><a href="https://github.com/rsdoiel/shelltools">Github</a></li>
+</ul>
+</nav>
+    <footer>
+    copyright (c) 2016 R. S. Doiel<br />
+    see: <a href="license.html">LICENSE</a>
+    </footer>
+</body>
+</html>
