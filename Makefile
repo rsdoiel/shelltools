@@ -3,6 +3,10 @@
 #
 PROJECT = shelltools
 
+VERSION = $(shell grep -m1 'Version = ' $(PROJECT).go | cut -d\"  -f 2)
+
+BRANCH = $(shell git branch | grep '* ' | cut -d\  -f 2)
+
 build:
 	go build -o bin/findfile cmds/findfile/findfile.go 
 	go build -o bin/finddir cmds/finddir/finddir.go 
@@ -18,18 +22,17 @@ website:
 	./mk-website.bash
 
 save:
-	./mk-website.bash
-	git commit -am "quick save"
-	git push origin master
+	git commit -am "Quick Save"
+	git push origin $(BRANCH)
 
 publish:
 	./mk-website.bash
 	./publish.bash
 
 clean: 
-	if [ -d bin ]; then rm -fR bin; fi
-	if [ -d dist ]; then rm -fR dist; fi
-	if [ -f $(PROJECT)-binary-release.zip ]; then rm -f $(PROJECT)-binary-release.zip; fi
+	if [ -d bin ]; then /bin/rm -fR bin; fi
+	if [ -d dist ]; then /bin/rm -fR dist; fi
+	if [ -f $(PROJECT)-$(VERSION)-release.zip ]; then rm -f $(PROJECT)-$(VERSION)-release.zip; fi
 
 install:
 	env GOBIN=$(HOME)/bin go install cmds/findfile/findfile.go
