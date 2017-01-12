@@ -127,8 +127,17 @@ func main() {
 		args = strings.Split(args[0], delimiter)
 	}
 
+	// Clean up fields removing outer quotes if necessary
+	fields := []string{}
+	for _, val := range args {
+		if strings.HasPrefix(val, "\"") && strings.HasSuffix(val, "\"") {
+			val = strings.TrimPrefix(strings.TrimSuffix(val, "\""), "\"")
+		}
+		fields = append(fields, strings.TrimSpace(val))
+	}
+
 	out := csv.NewWriter(os.Stdout)
-	if err := out.Write(args); err != nil {
+	if err := out.Write(fields); err != nil {
 		log.Fatalf("error wrint args as csv, %s", err)
 	}
 	out.Flush()
