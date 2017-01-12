@@ -3,8 +3,8 @@
 
 + normalize command line options between all tools where possible
 + normalize help display
-+ create a shelltools package for common CLI functionality
-    + Usage(), License(), Version()
++ Merge in cli package for all shelltools cmds
++ Make sure the license at the head of files conforms to LICENSE
 
 # someday maybe
 
