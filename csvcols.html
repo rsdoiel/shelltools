@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>shelltools -- a small collection of file and shell utilities</title>
+    <link href="css/site.css" rel="stylesheet" />
+<head>
+<body>
+    <header>
+        <h1>shelltools -- a small collection of file and shell utilities</h1>
+    </header>
+    <section><h1>csvcols</h1>
+
+<h2>USAGE</h2>
+
+<p>csvcols [OPTIONS] ARGS_AS_COLS</p>
+
+<h2>SYNOPSIS</h2>
+
+<p>csvcols converts a set of command line args into columns output in CSV format.</p>
+
+<h2>OPTIONS</h2>
+
+<ul>
+<li>-d, -delimiter    set delimiter for conversion</li>
+<li>-h, -help         display help</li>
+<li>-l, -license      display license</li>
+<li>-v, -version      display version</li>
+</ul>
+
+<h2>EXAMPLES</h2>
+
+<p>Simple usage of building a CSV file one row at a time.</p>
+
+<pre><code class="language-shell">    csvcols one two three &gt; 3col.csv
+    csvcols 1 2 3 &gt;&gt; 3col.csv
+    cat 3col.csv
+</code></pre>
+
+<p>Example parsing a pipe delimited string into a CSV line</p>
+
+<pre><code class="language-shell">    csvcols -d &quot;|&quot; &quot;one|two|three&quot; &gt; 3col.csv
+    csvcols -delimiter &quot;|&quot; &quot;1|2|3&quot; &gt;&gt; 3col.csv
+    cat 3col.csv
+</code></pre>
+</section>
+    <nav><ul>
+<li><a href="/">home</a></li>
+<li><a href="./">shelltools</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="install.html">Install</a></li>
+<li><a href="csvcols.html">csvcols</a></li>
+<li><a href="findfile.html">findfile</a></li>
+<li><a href="finddir.html">finddir</a></li>
+<li><a href="mergepath.html">mergepath</a></li>
+<li><a href="pathparts.html">pathparts</a></li>
+<li><a href="range.html">range</a></li>
+<li><a href="reldate.html">reldate</a></li>
+<li><a href="timefmt.html">timefmt</a></li>
+<li><a href="urlparse.html">urlparse</a></li>
+<li><a href="https://github.com/rsdoiel/shelltools">Github</a></li>
+</ul>
+</nav>
+    <footer>
+    copyright (c) 2014-2016 R. S. Doiel<br />
+    see: <a href="license.html">LICENSE</a>
+    </footer>
+</body>
+</html>
