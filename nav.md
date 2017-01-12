@@ -3,6 +3,7 @@
 + [shelltools](./)
 + [LICENSE](license.html)
 + [Install](install.html)
++ [csvcols](csvcols.html)
 + [findfile](findfile.html)
 + [finddir](finddir.html)
 + [mergepath](mergepath.html)
@@ -11,6 +12,5 @@
 + [reldate](reldate.html)
 + [timefmt](timefmt.html)
 + [urlparse](urlparse.html)
-+ [csvcols](csvcols.html)
 + [Github](https://github.com/rsdoiel/shelltools)
 
