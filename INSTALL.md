@@ -77,6 +77,7 @@ Or for Windows 10 Powershell
     $Env:GOBIN = "$HOME\bin"
     git clone https://github.com/rsdoiel/shelltools src/github.com/rsdoiel/shelltools
     cd src\github.com\rsdoiel\shelltools
+    go install cmds\csvcols\csvcols.go
     go install cmds\finddir\finddir.go
     go install cmds\findfile\filefile.go
     go install cmds\mergepath\mergepath.go
