@@ -16,14 +16,22 @@ build:
 	go build -o bin/range cmds/range/range.go 
 	go build -o bin/timefmt cmds/timefmt/timefmt.go 
 	go build -o bin/urlparse cmds/urlparse/urlparse.go 
+	go build -o bin/csvcols cmds/csvcols/csvcols.go
 	./mk-website.bash
 
 website:
 	./mk-website.bash
 
+status:
+	git status
+
 save:
 	git commit -am "Quick Save"
 	git push origin $(BRANCH)
+
+refresh:
+	git fetch origin
+	git pull origin $(BRANCH)
 
 publish:
 	./mk-website.bash
@@ -43,6 +51,7 @@ install:
 	env GOBIN=$(HOME)/bin go install cmds/range/range.go
 	env GOBIN=$(HOME)/bin go install cmds/timefmt/timefmt.go
 	env GOBIN=$(HOME)/bin go install cmds/urlparse/urlparse.go
+	env GOBIN=$(HOME)/bin go install cmds/csvcols/csvcols.go
 
 release:
 	./mk-release.bash
