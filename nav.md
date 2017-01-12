@@ -11,5 +11,6 @@
 + [reldate](reldate.html)
 + [timefmt](timefmt.html)
 + [urlparse](urlparse.html)
++ [csvcols](csvcols.html)
 + [Github](https://github.com/rsdoiel/shelltools)
 
