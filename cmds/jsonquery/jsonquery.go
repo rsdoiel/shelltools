@@ -14,7 +14,8 @@ import (
 	"path"
 
 	// 3rd Party packages
-	"github.com/simeji/jid"
+	//	"github.com/simeji/jid"
+	"github.com/rsdoiel/jid"
 
 	// My Packages
 	"github.com/rsdoiel/cli"
@@ -134,21 +135,32 @@ func main() {
 		}
 		defer out.Close()
 	}
-	// FIXME: Configure the jid engine
+
+	// Configure the jid engine
 	engineAttributes := &jid.EngineAttribute{
 		DefaultQuery: expression,
 		Monochrome:   monochrome,
 	}
 
-	// FIXME: Run the jid engine appropriately
+	// Run the jid engine appropriately
 	engine, err := jid.NewEngine(in, engineAttributes)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	result := engine.Run()
-	if err := result.GetError(); err != nil {
-		log.Fatalln(err)
-		os.Exit(1)
+	if len(expression) > 0 {
+		result := engine.Eval()
+		if err := result.GetError(); err != nil {
+			log.Fatalln(err)
+			os.Exit(1)
+		}
+		fmt.Printf("%s", result.GetContent())
+	} else {
+		result := engine.Run()
+		if err := result.GetError(); err != nil {
+			log.Fatalln(err)
+			os.Exit(1)
+		}
+		fmt.Printf("%s", result.GetContent())
 	}
-	fmt.Printf("%s", result.GetContent())
+
 }
