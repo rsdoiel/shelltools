@@ -17,6 +17,7 @@ build:
 	go build -o bin/timefmt cmds/timefmt/timefmt.go 
 	go build -o bin/urlparse cmds/urlparse/urlparse.go 
 	go build -o bin/csvcols cmds/csvcols/csvcols.go
+	go build -o bin/jsonquery cmds/jsonquery/jsonquery.go
 	./mk-website.bash
 
 website:
@@ -52,6 +53,7 @@ install:
 	env GOBIN=$(HOME)/bin go install cmds/timefmt/timefmt.go
 	env GOBIN=$(HOME)/bin go install cmds/urlparse/urlparse.go
 	env GOBIN=$(HOME)/bin go install cmds/csvcols/csvcols.go
+	env GOBIN=$(HOME)/bin go install cmds/jsonquery/jsonquery.go
 
 release:
 	./mk-release.bash

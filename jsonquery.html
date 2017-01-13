@@ -8,28 +8,42 @@
     <header>
         <h1>shelltools -- a small collection of file and shell utilities</h1>
     </header>
-    <section><h1>finddir</h1>
+    <section><h1>jsonquery</h1>
 
-<p>Lists directories recursively. Can be constrained by prefix, suffix or
-basename contents (e.g. contains).</p>
+<p><em>jsonquery</em> was inspired by Stephen Dolan&rsquo;s <a href="https://github.com/stedolan/jq">jq</a> and
+Simeji&rsquo;s <a href="https://github.com/simeji/jid">jid</a>. It leverages the latter&rsquo;s package for
+proccessing the JSON query path organized as a tool similar to <em>jq</em>.</p>
 
-<h2>USAGE</h2>
+<h2>USAGE:</h2>
 
-<pre><code>    finddir [OPTIONS] [TARGET_FILENAME] [DIRECTORIES_TO_SEARCH]
+<p><code>jsonquery [OPTIONS]</code></p>
+
+<h2>SYSNOPSIS</h2>
+
+<p>jsonquery provides for both interactive exloration of JSON structures like jid
+and command line scripting of data extraction like jq.</p>
+
+<h2>OPTIONS</h2>
+
+<pre><code>	-e	apply expression to input
+	-h	display help
+	-i	input filename
+	-l	display license
+	-m	display output in monochrome
+	-o	output filename
+	-v	display version
 </code></pre>
 
-<p>Finds directories based on matching prefix, suffix or contained text in base filename.</p>
+<h2>EXAMPLE</h2>
 
-<pre><code>    -c, -contains	find file(s) based on basename containing text
-    -d, -depth	    limit depth of directories walked
-    -e, -error-stop	Stop walk on file system errors (e.g. permissions)
-    -f, -full-path	list full path for files found
-    -h, -help	    display this help message
-    -l, -license	display license information
-    -m, -mod-time	display file modification time before the path
-    -p, -prefix	    find file(s) based on basename prefix
-    -s, -suffix	    find file(s) based on basename suffix
-    -v, -version	display version message
+<p>If myblob.json contained</p>
+
+<pre><code class="language-json">    {&quot;name&quot;: &quot;Doe, Jane&quot;, &quot;email&quot;:&quot;jane.doe@example.org&quot;}
+</code></pre>
+
+<p>Getting just the name could be done with</p>
+
+<pre><code class="language-shell">    jsonquery -i myblob.json -e .name
 </code></pre>
 </section>
     <nav><ul>

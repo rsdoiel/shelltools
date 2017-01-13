@@ -4,7 +4,7 @@
 #
 PROJECT=shelltools
 
-PROG_LIST="csvcols findfile finddir mergepath pathparts range reldate timefmt urlparse"
+PROG_LIST="csvcols findfile finddir jsonquery mergepath pathparts range reldate timefmt urlparse"
 
 VERSION=$(grep -m1 'Version = ' $PROJECT.go | cut -d\"  -f 2)
 
