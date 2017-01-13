@@ -24,15 +24,27 @@ proccessing the JSON query path organized as a tool similar to <em>jq</em>.</p>
 <p>jsonquery provides for both interactive exploration of JSON structures like jid
 and command line scripting flexibility for data extraction like jq.</p>
 
+<ul>
+<li>EXPRESSION can be an empty stirng or dot notation for an object&rsquo;s path</li>
+<li>INPUT_FILENAME is the filename to read or a dash &ldquo;-&rdquo; if you want to explicity read from stdin
+
+<ul>
+<li>if not provided then jsonquery reads from stdin</li>
+</ul></li>
+<li>OUTPUT_FILENAME is the filename to write or a dash &ldquo;-&rdquo; if you want to explicity write to stdout
+
+<ul>
+<li>if not provided then jsonquery write to stdout</li>
+</ul></li>
+</ul>
+
 <h2>OPTIONS</h2>
 
-<pre><code>-e  apply expression to input
--h  display help
--i  input filename
--l  display license
--m  display output in monochrome
--o  output filename
--v  display version
+<pre><code>	-h	display help
+	-i	run interactively
+	-l	display license
+	-m	display output in monochrome
+	-v	display version
 </code></pre>
 
 <h2>EXAMPLE</h2>
@@ -49,8 +61,10 @@ and command line scripting flexibility for data extraction like jq.</p>
 
 <p>This would yeild</p>
 
-<pre><code class="language-shell">    &quot;Doe, Jane&quot;
+<pre><code>    &quot;Doe, Jane&quot;
 </code></pre>
+
+<p>jsonquery v0.0.14-alpha-1</p>
 </section>
     <nav><ul>
 <li><a href="/">home</a></li>

@@ -16,15 +16,21 @@ proccessing the JSON query path organized as a tool similar to _jq_.
 jsonquery provides for both interactive exploration of JSON structures like jid 
 and command line scripting flexibility for data extraction like jq.
 
++ EXPRESSION can be an empty stirng or dot notation for an object's path
++ INPUT_FILENAME is the filename to read or a dash "-" if you want to explicity read from stdin
+	+ if not provided then jsonquery reads from stdin
++ OUTPUT_FILENAME is the filename to write or a dash "-" if you want to explicity write to stdout
+	+ if not provided then jsonquery write to stdout
+
 ## OPTIONS
 
-	-e	apply expression to input
+```
 	-h	display help
-	-i	input filename
+	-i	run interactively
 	-l	display license
 	-m	display output in monochrome
-	-o	output filename
 	-v	display version
+```
 
 ## EXAMPLE
 
@@ -42,7 +48,8 @@ Getting just the name could be done with
 
 This would yeild
 
-```shell
+```
     "Doe, Jane"
 ```
 
+jsonquery v0.0.14-alpha-1

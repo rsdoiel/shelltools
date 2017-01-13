@@ -31,6 +31,12 @@ SYSNOPSIS
 
 %s provides for both interactive exploration of JSON structures like jid 
 and command line scripting flexibility for data extraction like jq.
+
++ EXPRESSION can be an empty stirng or dot notation for an object's path
++ INPUT_FILENAME is the filename to read or a dash "-" if you want to explicity read from stdin
+	+ if not provided then %s reads from stdin
++ OUTPUT_FILENAME is the filename to write or a dash "-" if you want to explicity write to stdout
+	+ if not provided then %s write to stdout
 `
 
 	examples = `
@@ -55,10 +61,11 @@ This would yeild
 	showVersion bool
 
 	// Application Specific Options
-	monochrome  bool
-	expression  string
-	inputFName  string
-	outputFName string
+	monochrome     bool
+	runInteractive bool
+	expression     string
+	inputFName     string
+	outputFName    string
 )
 
 func init() {
@@ -69,9 +76,7 @@ func init() {
 
 	// Application Specific Options
 	flag.BoolVar(&monochrome, "m", false, "display output in monochrome")
-	flag.StringVar(&expression, "e", "", "apply expression to input")
-	flag.StringVar(&inputFName, "i", "", "input filename")
-	flag.StringVar(&inputFName, "o", "", "output filename")
+	flag.BoolVar(&runInteractive, "i", false, "run interactively")
 }
 
 func main() {
@@ -82,7 +87,7 @@ func main() {
 	// Configuration and command line interation
 	cfg := cli.New(appName, "JSONQUERY", fmt.Sprintf(shelltools.LicenseText, appName, shelltools.Version), shelltools.Version)
 	cfg.UsageText = fmt.Sprintf(usage, appName)
-	cfg.DescriptionText = fmt.Sprintf(description, appName)
+	cfg.DescriptionText = fmt.Sprintf(description, appName, appName, appName)
 	cfg.OptionsText = "OPTIONS\n"
 	cfg.ExampleText = fmt.Sprintf(examples, appName)
 
@@ -104,6 +109,10 @@ func main() {
 		os.Exit(0)
 	}
 
+	if runInteractive == true {
+		expression = "."
+	}
+
 	var (
 		in  *os.File
 		out *os.File
@@ -111,22 +120,26 @@ func main() {
 	)
 
 	// Handle ordered args.
-	if len(args) > 0 {
-		if strings.HasPrefix(args[0], ".") == true {
-			expression = args[0]
-		} else {
-			inputFName = args[0]
+	for _, arg := range args {
+		switch {
+		case len(expression) == 0:
+			if len(arg) == 0 {
+				arg = "."
+			}
+			expression = arg
+		case len(inputFName) == 0:
+			if strings.Compare(arg, "-") != 0 {
+				inputFName = arg
+			}
+		case len(outputFName) == 0:
+			if strings.Compare(arg, "-") != 0 {
+				outputFName = arg
+			}
 		}
-	}
-	if len(args) > 1 && len(inputFName) == 0 {
-		inputFName = args[1]
-	}
-	if len(args) > 2 && len(outputFName) == 0 {
-		outputFName = args[2]
 	}
 
 	// FIXME: figure out if this is an interactive session or content read in from a file.
-	if len(inputFName) == 0 {
+	if len(inputFName) == 0 || strings.Compare(inputFName, "-") == 0 {
 		in = os.Stdin
 	} else {
 		in, err = os.Open(inputFName)
@@ -135,10 +148,10 @@ func main() {
 		}
 		defer in.Close()
 	}
-	if len(outputFName) == 0 {
+	if len(outputFName) == 0 || strings.Compare(outputFName, "-") == 0 {
 		out = os.Stdout
 	} else {
-		out, err = os.Open(outputFName)
+		out, err = os.Create(outputFName)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -146,8 +159,10 @@ func main() {
 	}
 
 	// Make sure we are ready to run the engine, else display help with error level
-	if len(expression) == 0 && len(inputFName) == 0 {
+	expression = strings.TrimSpace(expression)
+	if len(expression) == 0 {
 		fmt.Println(cfg.Usage())
+		fmt.Println("Missing expression")
 		os.Exit(1)
 	}
 
@@ -162,20 +177,16 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	if len(expression) > 0 {
-		result := engine.Eval()
-		if err := result.GetError(); err != nil {
-			log.Fatalln(err)
-			os.Exit(1)
-		}
-		fmt.Printf("%s", result.GetContent())
-	} else {
-		result := engine.Run()
-		if err := result.GetError(); err != nil {
-			log.Fatalln(err)
-			os.Exit(1)
-		}
-		fmt.Printf("%s", result.GetContent())
-	}
+	var result jid.EngineResultInterface
 
+	if runInteractive == true {
+		result = engine.Run()
+	} else {
+		result = engine.Eval()
+	}
+	if err := result.GetError(); err != nil {
+		log.Fatalln(err)
+		os.Exit(1)
+	}
+	fmt.Fprintf(out, "%s", result.GetContent())
 }
