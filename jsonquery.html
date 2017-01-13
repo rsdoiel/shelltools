@@ -14,24 +14,25 @@
 Simeji&rsquo;s <a href="https://github.com/simeji/jid">jid</a>. It leverages the latter&rsquo;s package for
 proccessing the JSON query path organized as a tool similar to <em>jq</em>.</p>
 
-<h2>USAGE:</h2>
+<h2>USAGE</h2>
 
-<p><code>jsonquery [OPTIONS]</code></p>
+<pre><code>    jsonquery [OPTIONS] [EXPRESSION] [INPUT_FILENAME] [OUTPUT_FILENAME]
+</code></pre>
 
 <h2>SYSNOPSIS</h2>
 
-<p>jsonquery provides for both interactive exloration of JSON structures like jid
-and command line scripting of data extraction like jq.</p>
+<p>jsonquery provides for both interactive exploration of JSON structures like jid
+and command line scripting flexibility for data extraction like jq.</p>
 
 <h2>OPTIONS</h2>
 
-<pre><code>	-e	apply expression to input
-	-h	display help
-	-i	input filename
-	-l	display license
-	-m	display output in monochrome
-	-o	output filename
-	-v	display version
+<pre><code>-e  apply expression to input
+-h  display help
+-i  input filename
+-l  display license
+-m  display output in monochrome
+-o  output filename
+-v  display version
 </code></pre>
 
 <h2>EXAMPLE</h2>
@@ -43,7 +44,12 @@ and command line scripting of data extraction like jq.</p>
 
 <p>Getting just the name could be done with</p>
 
-<pre><code class="language-shell">    jsonquery -i myblob.json -e .name
+<pre><code class="language-shell">    jsonquery .name myblob.json
+</code></pre>
+
+<p>This would yeild</p>
+
+<pre><code class="language-shell">    &quot;Doe, Jane&quot;
 </code></pre>
 </section>
     <nav><ul>

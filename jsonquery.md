@@ -5,18 +5,19 @@ _jsonquery_ was inspired by Stephen Dolan's [jq](https://github.com/stedolan/jq)
 Simeji's [jid](https://github.com/simeji/jid). It leverages the latter's package for
 proccessing the JSON query path organized as a tool similar to _jq_.
 
-## USAGE: 
+## USAGE
 
-`jsonquery [OPTIONS]`
+```
+    jsonquery [OPTIONS] [EXPRESSION] [INPUT_FILENAME] [OUTPUT_FILENAME]
+```
 
 ## SYSNOPSIS
 
-jsonquery provides for both interactive exloration of JSON structures like jid 
-and command line scripting of data extraction like jq.
+jsonquery provides for both interactive exploration of JSON structures like jid 
+and command line scripting flexibility for data extraction like jq.
 
 ## OPTIONS
 
-```
 	-e	apply expression to input
 	-h	display help
 	-i	input filename
@@ -24,7 +25,6 @@ and command line scripting of data extraction like jq.
 	-m	display output in monochrome
 	-o	output filename
 	-v	display version
-```
 
 ## EXAMPLE
 
@@ -37,6 +37,12 @@ If myblob.json contained
 Getting just the name could be done with
 
 ```shell
-    jsonquery -i myblob.json -e .name
+    jsonquery .name myblob.json
+```
+
+This would yeild
+
+```shell
+    "Doe, Jane"
 ```
 

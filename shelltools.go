@@ -1,7 +1,7 @@
 package shelltools
 
 const (
-	Version = "v0.0.14-alpha-0"
+	Version = "v0.0.14-alpha-1"
 
 	LicenseText = `
 %s %s

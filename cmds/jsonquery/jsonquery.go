@@ -12,6 +12,7 @@ import (
 	"log"
 	"os"
 	"path"
+	"strings"
 
 	// 3rd Party packages
 	//	"github.com/simeji/jid"
@@ -23,7 +24,7 @@ import (
 )
 
 var (
-	usage = `USAGE: %s [OPTIONS] [EXPRESSION] [INPUT_FILENAME]`
+	usage = `USAGE: %s [OPTIONS] [EXPRESSION] [INPUT_FILENAME] [OUTPUT_FILENAME]`
 
 	description = `
 SYSNOPSIS
@@ -41,7 +42,11 @@ If myblob.json contained
 
 Getting just the name could be done with
 
-    %s -i myblob.json -e .name
+    %s .name myblob.json
+
+This would yeild
+
+    "Doe, Jane"
 `
 
 	// Basic Options
@@ -107,12 +112,16 @@ func main() {
 
 	// Handle ordered args.
 	if len(args) > 0 {
-		expression = args[0]
+		if strings.HasPrefix(args[0], ".") == true {
+			expression = args[0]
+		} else {
+			inputFName = args[0]
+		}
 	}
-	if len(args) > 1 {
+	if len(args) > 1 && len(inputFName) == 0 {
 		inputFName = args[1]
 	}
-	if len(args) > 2 {
+	if len(args) > 2 && len(outputFName) == 0 {
 		outputFName = args[2]
 	}
 
@@ -134,6 +143,12 @@ func main() {
 			log.Fatalln(err)
 		}
 		defer out.Close()
+	}
+
+	// Make sure we are ready to run the engine, else display help with error level
+	if len(expression) == 0 && len(inputFName) == 0 {
+		fmt.Println(cfg.Usage())
+		os.Exit(1)
 	}
 
 	// Configure the jid engine
