@@ -30,21 +30,26 @@ var (
 SYSNOPSIS
 
 %s provides for both interactive exploration of JSON structures like jid 
-and command line scripting flexibility for data extraction like jq.
+and command line scripting flexibility for data extraction into delimited
+columns. This is helpful in flattening content extracted from JSON blobs.
+The default delimiter for each value extracted is a comma. This can be
+overridden with an option.
 
 + EXPRESSION can be an empty stirng or dot notation for an object's path
-+ INPUT_FILENAME is the filename to read or a dash "-" if you want to explicity read from stdin
++ INPUT_FILENAME is the filename to read or a dash "-" if you want to 
+  explicity read from stdin
 	+ if not provided then %s reads from stdin
-+ OUTPUT_FILENAME is the filename to write or a dash "-" if you want to explicity write to stdout
++ OUTPUT_FILENAME is the filename to write or a dash "-" if you want to 
+  explicity write to stdout
 	+ if not provided then %s write to stdout
 `
 
 	examples = `
-EXAMPLE
+EXAMPLES
 
 If myblob.json contained
 
-    {"name": "Doe, Jane", "email":"jane.doe@example.org"}
+{"name": "Doe, Jane", "email":"jane.doe@example.org", "age": 42}
 
 Getting just the name could be done with
 
@@ -53,6 +58,16 @@ Getting just the name could be done with
 This would yeild
 
     "Doe, Jane"
+
+Flipping .name and .age into pipe delimited columns is as 
+easy as listing each field in the expression inside a 
+space delimited string.
+
+    %s -d\|  ".name .age" myblob.json
+
+This would yeild
+
+    "Doe, Jane"|42
 `
 
 	// Basic Options
@@ -63,6 +78,7 @@ This would yeild
 	// Application Specific Options
 	monochrome     bool
 	runInteractive bool
+	delimiter      = ","
 	expression     string
 	inputFName     string
 	outputFName    string
@@ -77,6 +93,7 @@ func init() {
 	// Application Specific Options
 	flag.BoolVar(&monochrome, "m", false, "display output in monochrome")
 	flag.BoolVar(&runInteractive, "i", false, "run interactively")
+	flag.StringVar(&delimiter, "d", delimiter, "set the delimiter for multi-field output")
 }
 
 func main() {
@@ -181,12 +198,24 @@ func main() {
 
 	if runInteractive == true {
 		result = engine.Run()
+		if err := result.GetError(); err != nil {
+			log.Fatalln(err)
+			os.Exit(1)
+		}
+		//FIXME: should honor query mode
+		fmt.Fprintf(out, "%s", result.GetContent())
 	} else {
-		result = engine.Eval()
+		qrys := strings.Split(expression, " ")
+		for i, qry := range qrys {
+			result = engine.EvalString(qry)
+			if err := result.GetError(); err != nil {
+				log.Fatalln(err)
+				os.Exit(1)
+			}
+			if i > 0 {
+				fmt.Fprintf(out, "%s", delimiter)
+			}
+			fmt.Fprintf(out, "%s", result.GetContent())
+		}
 	}
-	if err := result.GetError(); err != nil {
-		log.Fatalln(err)
-		os.Exit(1)
-	}
-	fmt.Fprintf(out, "%s", result.GetContent())
 }
