@@ -8,7 +8,7 @@ Various utilities for simplifying work on the command line.
 + [csvcols](csvcols.html) - converts commandline parameters into a CSV encoded row written to standard out
 + [findfile](findfile.html) - find files based on prefix, suffix or contained string
 + [finddir](finddir.html) - find directories based on prefix, suffix or contained string
-+ [jsonquery](jsonquery.html) - a tool for exploring and extracting JSON 
++ [jsoncols](jsoncols.html) - a tool for exploring and extracting JSON values into columns
 + [mergepath](mergepath.html) - prefix, append, clip path variables
 + [pathparts](pathparts.html) - split a path into parts
 + [range](range.html) - emit a range of integers (useful for numbered loops in Bash)
