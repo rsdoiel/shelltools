@@ -1,30 +1,36 @@
 
-# jsonquery
+# jsoncols
 
-_jsonquery_ was inspired by Stephen Dolan's [jq](https://github.com/stedolan/jq) and 
+_jsoncols_ was inspired by Stephen Dolan's [jq](https://github.com/stedolan/jq) and 
 Simeji's [jid](https://github.com/simeji/jid). It leverages the latter's package for
 proccessing the JSON query path organized as a tool similar to _jq_.
 
 ## USAGE
 
 ```
-    jsonquery [OPTIONS] [EXPRESSION] [INPUT_FILENAME] [OUTPUT_FILENAME]
+    jsoncols [OPTIONS] [EXPRESSION] [INPUT_FILENAME] [OUTPUT_FILENAME]
 ```
 
 ## SYSNOPSIS
 
-jsonquery provides for both interactive exploration of JSON structures like jid 
-and command line scripting flexibility for data extraction like jq.
+jsoncols provides for both interactive exploration of JSON structures like jid 
+and command line scripting flexibility for data extraction into delimited
+columns. This is helpful in flattening content extracted from JSON blobs.
+The default delimiter for each value extracted is a comma. This can be
+overridden with an option.
 
 + EXPRESSION can be an empty stirng or dot notation for an object's path
-+ INPUT_FILENAME is the filename to read or a dash "-" if you want to explicity read from stdin
-	+ if not provided then jsonquery reads from stdin
-+ OUTPUT_FILENAME is the filename to write or a dash "-" if you want to explicity write to stdout
-	+ if not provided then jsonquery write to stdout
++ INPUT_FILENAME is the filename to read or a dash "-" if you want to 
+  explicity read from stdin
+	+ if not provided then jsoncols reads from stdin
++ OUTPUT_FILENAME is the filename to write or a dash "-" if you want to 
+  explicity write to stdout
+	+ if not provided then jsoncols write to stdout
 
 ## OPTIONS
 
 ```
+	-d	set the delimiter for multi-field output
 	-h	display help
 	-i	run interactively
 	-l	display license
@@ -32,24 +38,37 @@ and command line scripting flexibility for data extraction like jq.
 	-v	display version
 ```
 
-## EXAMPLE
+## EXAMPLES
 
 If myblob.json contained
 
 ```json
-    {"name": "Doe, Jane", "email":"jane.doe@example.org"}
+    {"name": "Doe, Jane", "email":"jane.doe@example.org", "age": 42}
 ```
 
 Getting just the name could be done with
 
 ```shell
-    jsonquery .name myblob.json
+    jsoncols .name myblob.json
 ```
 
 This would yeild
 
-```
+```text
     "Doe, Jane"
 ```
 
-jsonquery v0.0.14-alpha-1
+Flipping .name and .age into pipe delimited columns is as 
+easy as listing each field in the expression inside a 
+space delimited string.
+
+```shell
+    jsoncols -d\|  ".name .age" myblob.json
+```
+
+This would yeild
+
+```text
+    "Doe, Jane"|42
+```
+

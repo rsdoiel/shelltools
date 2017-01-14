@@ -106,7 +106,7 @@ func main() {
 	cfg.UsageText = fmt.Sprintf(usage, appName)
 	cfg.DescriptionText = fmt.Sprintf(description, appName, appName, appName)
 	cfg.OptionsText = "OPTIONS\n"
-	cfg.ExampleText = fmt.Sprintf(examples, appName)
+	cfg.ExampleText = fmt.Sprintf(examples, appName, appName)
 
 	//NOTE: Need to handle JSONQUERY_MONOCHROME setting
 	monochrome = cfg.MergeEnvBool("monochrome", monochrome)
