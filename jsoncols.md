@@ -2,8 +2,7 @@
 # jsoncols
 
 _jsoncols_ was inspired by Stephen Dolan's [jq](https://github.com/stedolan/jq) and 
-Simeji's [jid](https://github.com/simeji/jid). It leverages the latter's package for
-proccessing the JSON query path organized as a tool similar to _jq_.
+Simeji's [jid](https://github.com/simeji/jid). 
 
 ## USAGE
 
@@ -13,7 +12,7 @@ proccessing the JSON query path organized as a tool similar to _jq_.
 
 ## SYSNOPSIS
 
-jsoncols provides for both interactive exploration of JSON structures like jid 
+_jsoncols_ provides for both interactive exploration of JSON structures like jid 
 and command line scripting flexibility for data extraction into delimited
 columns. This is helpful in flattening content extracted from JSON blobs.
 The default delimiter for each value extracted is a comma. This can be
@@ -22,10 +21,10 @@ overridden with an option.
 + EXPRESSION can be an empty stirng or dot notation for an object's path
 + INPUT_FILENAME is the filename to read or a dash "-" if you want to 
   explicity read from stdin
-	+ if not provided then jsoncols reads from stdin
+	+ if not provided then _jsoncols_ reads from stdin
 + OUTPUT_FILENAME is the filename to write or a dash "-" if you want to 
   explicity write to stdout
-	+ if not provided then jsoncols write to stdout
+	+ if not provided then _jsoncols_ write to stdout
 
 ## OPTIONS
 
