@@ -6,7 +6,6 @@
 + [csvcols](csvcols.html)
 + [findfile](findfile.html)
 + [finddir](finddir.html)
-+ [jsoncols](jsoncols.html)
 + [mergepath](mergepath.html)
 + [pathparts](pathparts.html)
 + [range](range.html)
