@@ -55,7 +55,7 @@ var (
 	description = `
 SYNOPSIS
 
-%s converts a set of command line args into columns output in CSV format.
+%s converts a set of command line args into columns output in CSV formator filters CSV columns from stdin.
 `
 
 	examples = `
@@ -72,6 +72,11 @@ Example parsing a pipe delimited string into a CSV line
     %s -d "|" "one|two|three" > 3col.csv
     %s -delimiter "|" "1|2|3" >> 3col.csv
     cat 3col.csv
+
+Filter a 5 columns CSV file saving columns 2 and 4
+in 2col.csv.
+
+    cat 5col.csv | %s -f 2 4 > 2col.csv
 `
 
 	// Basic Options
