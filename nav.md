@@ -3,7 +3,6 @@
 + [shelltools](./)
 + [LICENSE](license.html)
 + [Install](install.html)
-+ [csvcols](csvcols.html)
 + [findfile](findfile.html)
 + [finddir](finddir.html)
 + [mergepath](mergepath.html)
