@@ -1,6 +1,7 @@
 
 # next
 
++ depreciate csvcols from shell tools, now in datatools
 + normalize command line options between all tools where possible
 + normalize help display
 + Merge in cli package for all shelltools cmds

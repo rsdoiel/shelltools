@@ -7,10 +7,7 @@ VERSION = $(shell grep -m1 'Version = ' $(PROJECT).go | cut -d\"  -f 2)
 
 BRANCH = $(shell git branch | grep '* ' | cut -d\  -f 2)
 
-build: bin/csvcols bin/findfile bin/finddir bin/pathparts bin/mergepath bin/reldate bin/range bin/timefmt bin/urlparse
-
-bin/csvcols: shelltools.go cmds/csvcols/csvcols.go
-	go build -o bin/csvcols cmds/csvcols/csvcols.go
+build: bin/findfile bin/finddir bin/pathparts bin/mergepath bin/reldate bin/range bin/timefmt bin/urlparse
 
 bin/findfile: shelltools.go cmds/findfile/findfile.go
 	go build -o bin/findfile cmds/findfile/findfile.go 
@@ -60,7 +57,6 @@ clean:
 	if [ -f $(PROJECT)-$(VERSION)-release.zip ]; then rm -f $(PROJECT)-$(VERSION)-release.zip; fi
 
 install:
-	env GOBIN=$(HOME)/bin go install cmds/csvcols/csvcols.go
 	env GOBIN=$(HOME)/bin go install cmds/findfile/findfile.go
 	env GOBIN=$(HOME)/bin go install cmds/finddir/finddir.go
 	env GOBIN=$(HOME)/bin go install cmds/pathparts/pathparts.go
@@ -71,7 +67,6 @@ install:
 	env GOBIN=$(HOME)/bin go install cmds/urlparse/urlparse.go
 
 dist/linux-amd64:
-	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o dist/linux-amd64/csvcols cmds/csvcols/csvcols.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o dist/linux-amd64/findfile cmds/findfile/findfile.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o dist/linux-amd64/finddir cmds/finddir/finddir.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o dist/linux-amd64/pathparts cmds/pathparts/pathparts.go
@@ -82,7 +77,6 @@ dist/linux-amd64:
 	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o dist/linux-amd64/urlparse cmds/urlparse/urlparse.go
 
 dist/macosx-amd64:
-	env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o dist/macosx-amd64/csvcols cmds/csvcols/csvcols.go
 	env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o dist/macosx-amd64/findfile cmds/findfile/findfile.go
 	env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o dist/macosx-amd64/finddir cmds/finddir/finddir.go
 	env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o dist/macosx-amd64/pathparts cmds/pathparts/pathparts.go
@@ -93,7 +87,6 @@ dist/macosx-amd64:
 	env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o dist/macosx-amd64/urlparse cmds/urlparse/urlparse.go
 
 dist/windows-amd64:
-	env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o dist/windows-amd64/csvcols.exe cmds/csvcols/csvcols.go
 	env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o dist/windows-amd64/findfile.exe cmds/findfile/findfile.go
 	env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o dist/windows-amd64/finddir.exe cmds/finddir/finddir.go
 	env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o dist/windows-amd64/pathparts.exe cmds/pathparts/pathparts.go
@@ -104,7 +97,6 @@ dist/windows-amd64:
 	env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o dist/windows-amd64/urlparse.exe cmds/urlparse/urlparse.go
 
 dist/raspbian-arm7:
-	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o dist/raspbian-arm7/csvcols cmds/csvcols/csvcols.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o dist/raspbian-arm7/findfile cmds/findfile/findfile.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o dist/raspbian-arm7/finddir cmds/finddir/finddir.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o dist/raspbian-arm7/pathparts cmds/pathparts/pathparts.go
@@ -115,7 +107,6 @@ dist/raspbian-arm7:
 	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -o dist/raspbian-arm7/urlparse cmds/urlparse/urlparse.go
 
 dist/raspbian-arm6:
-	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=6 go build -o dist/raspbian-arm6/csvcols cmds/csvcols/csvcols.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=6 go build -o dist/raspbian-arm6/findfile cmds/findfile/findfile.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=6 go build -o dist/raspbian-arm6/finddir cmds/finddir/finddir.go
 	env CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=6 go build -o dist/raspbian-arm6/pathparts cmds/pathparts/pathparts.go

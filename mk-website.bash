@@ -45,7 +45,7 @@ echo "Generating license.html"
 MakePage nav.md "markdown:$(cat LICENSE)" license.html
 
 # Generate the individual command docuumentation pages
-for BNAME in csvcols finddir findfile pathparts mergepath range reldate urlparse; do
+for BNAME in finddir findfile pathparts mergepath range reldate urlparse; do
     echo "Generating $BNAME.html"
     MakePage nav.md "$BNAME.md" "$BNAME.html"
 done
