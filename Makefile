@@ -126,7 +126,5 @@ targets: dist/linux-amd64 dist/macosx-amd64 dist/windows-amd64 dist/raspbian-arm
 
 docs: dist dist/README.md dist/LICENSE dist/INSTALL.md dist/demo 
 
-zip: $(PROJECT)-$(VERSION)-release.zip 
+release: targets docs
 	zip -r $(PROJECT)-$(VERSION)-release.zip dist/
-
-release: targets docs zip
